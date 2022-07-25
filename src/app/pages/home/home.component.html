@@ -1,0 +1,23 @@
+<form  >
+  <div class="imgcontainer">
+    <img src="https://firebasestorage.googleapis.com/v0/b/fragmento33.appspot.com/o/FreeToPlay%2Fpngwing.com%20(14).png?alt=media&token=f991fdc5-f0d0-4757-980d-8894fca63b6e" style="height: 250px; width: 200px;" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" (click)="iniciarSesion()" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
