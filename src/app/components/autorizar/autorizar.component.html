@@ -1,23 +1,129 @@
-<!-- <div class="container my-5">
-  <h1 class="mb-3">editar</h1>
-<div class="row">
-  <div class="col-6">
-    <form #form="ngForm" *ngFor="let item of datatable"  (click)="onUpdateMascota(solicitud)">
-      <div class="mb3">
-        <label for="id" class="form-label">Id</label>
-      <input type="number" class="form-control" id="id" readonly name="id" [(ngModel)]="item.id_solicitud">
-      </div>
-
-      <div class="mb3">
-        <label  class="form-label">NS</label>
-      <input type="text" class="form-control" id="solicitante"  name="solicitante" [(ngModel)]="item.solicitante">
-      </div>
-
-      <button type="submit" class="btn btn-primary">save</button>
-    </form>
-  </div>
+<div class="navega card-header">
+  <h5 class="text-center">Datos de la Solicitud</h5>
 </div>
-</div> -->
+<html>
+  <body>
+    <div class="card text-center">
+      <div class="card-body" *ngFor="let item of datatable">
+        <!--aqui-->
 
+        <hr />
+        <p class="card-text">
+          No. Solicitud:
+          <b>{{ item.id_solicitud }}</b>
+        </p>
+        <p class="card-text">
+          Solicitante
+          <b>{{ item.solicitante }}</b>
+        </p>
+        <p class="card-text">
+          Fecha Solicitud:
+          <b>{{ item.fechaSolicitud }}</b>
+        </p>
+        <p class="card-text">
+          Provedor:
+          <b>{{ item.nombreProvedor }}</b>
+        </p>
+        <p class="card-text">
+          Motivo Salida:
+          <b>{{ item.motivo }}</b>
+        </p>
+        <p class="card-text">
+          Area:
+          <b>{{ item.area }}</b>
+        </p>
+        <p class="card-text">
+          Descripción:
+          <b>{{ item.descripcion }}</b>
+        </p>
+        <p class="card-text">
+          Observaciones:
+          <b>{{ item.observaciones }}</b>
+        </p>
+        <!--  
+      <p><b class="formataAprove">{{item.statusAprobacion}}</b></p> -->
+        <div
+          *ngIf="item.statusAprobacion === 'Aprobada'; then todo; else nada"
+        ></div>
+        <ng-template #todo>
+          <img
+            src="./assets/aprovado.jpg"
+            style="width: 95px; height: 95px; border-radius: 2cm;"
+          />
+        </ng-template>
+        <ng-template #nada>
+          <div
+            *ngIf="
+              item.statusAprobacion === 'Rechazada';
+              then vaciar;
+              else llenar
+            "
+          ></div>
+          <ng-template #vaciar>
+            <img
+              src="./assets/rechazado.jpg"
+              style="width: 95px; height: 95px; border-radius: 2cm;"
+            />
+          </ng-template>
+          <ng-template #llenar>
+            <img style="width: 95px; height: 95px; border-radius: 2cm;" />
+          </ng-template>
+        </ng-template>
+        <hr />
 
+        <div
+          *ngIf="item.statusAprobacion !== ''; then thenBlock; else elseBlock"
+        ></div>
+        <ng-template #thenBlock>
+          <button
+            type="button"
+            id="aprobado"
+            class="btn btn-primary"
+            value="false"
+            (click)="onSetData1(item); onUpdateSalida(solicitud)"
+            disabled
+          >
+            Aprobar Solicitud
+          </button>
+          &nbsp;&nbsp;
+          <button
+            type="button"
+            id="rechazado"
+            (click)="onSetData2(item); onUpdateSalida(solicitud)"
+            class="btn btn-danger"
+            disabled
+          >
+            Rechazar Solicitud
+          </button>
+        </ng-template>
+        <ng-template #elseBlock>
+          <button
+            type="button"
+            id="aprobado"
+            class="btn btn-primary"
+            value="false"
+            (click)="onSetData1(item); onUpdateSalida(solicitud)"
+          >
+            Aprobar Solicitud
+          </button>
+          &nbsp;&nbsp;
+          <button
+            type="button"
+            id="rechazado"
+            (click)="onSetData2(item); onUpdateSalida(solicitud)"
+            class="btn btn-danger"
+          >
+            Rechazar Solicitud
+          </button>
+        </ng-template>
+        <br />
+      </div>
+      <!--aqui-->
+      <div></div>
+    </div>
 
+    <div class="card-footer text-muted card1">
+      <h5 class="text-center">Autoriza @Autorizador</h5>
+    </div>
+  </body>
+</html>

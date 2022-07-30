@@ -9,46 +9,58 @@
               <thead>
                 <tr class="table-info ">
                   <th>ID</th>
-                  <th>Solicitante</th>
-                  <th>Fecha Solicitud</th>
-                  <th>Proveedor</th>
-                  <th>Motivo Salida</th>
-                  <th>Cantidad</th>
-                  <th>Unidad Medida</th>
-                  <th>Area</th>
-                  <th>Descripción</th>
-                  <th>Observaciones</th>
-                  <th>Autorizador</th>
-                  <th>Salida</th>
-                  <th>Provedor</th>
-                  <th>Regreso</th>
-                  <th>Status</th>
-                  <th>Comentarios</th>
-                  <th>fecha compromiso</th>
-                  <th></th>
+        <th>Solicitante</th>
+        <th>Área</th>
+        <th>Fecha Solicitud</th>
+        <th>Motivo Salida</th>
+        <th>Descripción</th>
+        <th>Observaciones</th>
+        <th>Proveedor</th>
+        <th>Tipo de ticket</th>
+        <th>¿El artículo regresa?</th>
+        <th>Autorizador</th>
+        <th>Estatus de aprobación</th>
+        <!--<th>Comentarios autirizador</th>-->
+        <th>Fecha de salida</th>
+        <th>Fecha de Regreso</th>
+        <th>Comentarios Almacén</th>
+        <th>Fecha compromiso</th>
+        <th>Status</th>
+        <th>Comentarios compras</th>
+        <th></th>
                 </tr>
               </thead>
               <tbody class="table table-bordered">
                 <tr *ngFor="let item of datatable"   style="width: 100%;">
-                  <td>{{item.id_solicitud}}</td>
-                  <td>{{item.solicitante}}</td>
-                  <td>{{item.fechaSolicitud}}</td>
-                  <td>{{item.para}}</td>
-                  <td>{{item.motivo}}</td>
-                  <td>{{item.cantidad}}</td>
-                  <td>{{item.unidadMedida}}</td>
-                  <td>{{item.area}}</td>
-                  <td>{{item.descripcion}}</td>
-                  <td>{{item.observaciones}}</td>
-                  <td>{{item.autorizador}}</td>
-                  <td>{{item.fechaSalida}}</td>
-                  <td>{{item.nombreProvedor}}</td>
-                  <td>{{item.fechaRegreso}}</td>
-                  <td>{{item.status2}}</td>
-                  <td>{{item.comentariosCompras}}</td>
-                  <td>{{item.fechaCompromiso}}</td>
-                  <td><button (click)="onSetData(item); openFormModal()"  type="button" class="btnC  btn-primary">Agregar Comentario</button></td>
                  
+ <td>{{ item.id_solicitud }}</td>
+ <td>{{ item.solicitante }}</td>
+ <td>{{ item.area }}</td>
+ <td>{{ item.fechaSolicitud }}</td>
+ <td>{{ item.motivo }}</td>
+ <td>{{ item.descripcion }}</td>
+ <td>{{ item.observaciones }}</td>
+ <td>{{ item.provedor }}</td>
+ <td>{{ item.tipoTicket }}</td>
+ <td>{{ item.regresa }}</td>
+ <td>{{ item.autorizador }}</td>
+ <td>{{ item.statusAprobacion }}</td>
+ <td>{{ item.fechaSalida }}</td>
+ <td>{{ item.fechaRegreso }}</td>
+ <td>{{ item.comentariosRegreso }}</td>
+ <td>{{ item.fechaCompromiso }}</td>
+ <td>{{ item.status2 }}</td>
+ <td>{{ item.comentariosCompras }}</td>
+ <td>
+   <button
+     (click)="onSetData(item); openFormModal()"
+     type="button"
+     class=""
+   >
+     Agregar Comentario
+   </button>
+   <a type="button" class="nav-link active"  routerLink="HistorialComents/{{item.id_solicitud}}" >Mostara historial</a>
+ </td>
                 </tr>
               </tbody>
             </table>

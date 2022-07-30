@@ -1,0 +1,51 @@
+<div class="navega card-header">
+    <h5 class="text-center">Datos de la Solicitud</h5>
+  </div>
+  <html>
+    <body>
+      <div class="card text-center">
+        <div class="card-body" >
+          
+    <div class="input-group-lg">
+     
+
+
+        <table
+        id="example"
+        style="width: 100%;"
+        class="table table-striped table-bordered"
+      >
+        <thead>
+          <tr class="table-info">
+            <th>id_comentarios</th>
+            <th>id_solicitud</th>
+            <th>Solicitante</th>
+            <th>Área</th>
+            
+         
+          </tr>
+        </thead>
+        <tbody class="table table-bordered">
+          <tr *ngFor="let item of datatablecomen" style="width: 100%;">
+            <td>{{ item.id_comentarios }}</td>
+            <td>{{ item.id_solicitud }}</td>
+            <td>{{ item.fecha }}</td>
+            <td>{{ item.mensajeHistorial }}</td>
+            
+         
+          </tr>
+        </tbody>
+      </table>
+    
+    
+        </div>
+        </div>
+        <!--aqui-->
+        <div></div>
+      </div>
+  
+      <div class="card-footer text-muted card1">
+        <h5 class="text-center">Autoriza @Autorizador</h5>
+      </div>
+    </body>
+  </html>

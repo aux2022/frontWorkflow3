@@ -21,8 +21,7 @@ export class MostrarDatosComponent implements OnInit {
    provedor:"",
 
    motivo: '',
-   cantidad: 0,
-   unidadMedida: '',
+   tipoTicket: '',
    area: '',
    descripcion: '',
    observaciones: '',

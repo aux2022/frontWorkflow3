@@ -53,22 +53,30 @@ onUpdateMonitoreoC(solicitud:Solicitud):void{
 }
 onSetData(select:any){
 
-  this.solicitud.id_solicitud=select.id_solicitud;
-  this.solicitud.solicitante=select.solicitante;
-  this.solicitud.fechaSolicitud=select.fechaSalida;
-  this.solicitud.provedor=select.nombreproveedor;
-  this.solicitud.motivo=select.motivo;
-  this.solicitud.cantidad=select.cantidad;
-  this.solicitud.unidadMedida=select.unidadMedida;
-  this.solicitud.area=select.area;
-  this.solicitud.descripcion=select.descripcion;
-  this.solicitud.observaciones=select.observaciones;
-  this.solicitud.autorizador=select.autorizador;
-  this.solicitud.fechaSalida=select.fechaSalida;
-  this.solicitud.nombreProvedor=select.nombreProvedor;
-  this.solicitud.comentariosCompras=select.comentariosCompras;
-  this.solicitud.fechaRegreso=select.fechaRegreso;
-  this.solicitud.status2=select.status2;
+  this.solicitud.id_solicitud = select.id_solicitud
+  this.solicitud.solicitante = select.solicitante
+  this.solicitud.correoSolicitante = select.correoSolicitante
+  this.solicitud.fechaSolicitud = select.fechaSolicitud
+  this.solicitud.tipoTicket = select.tipoTicket
+  this.solicitud.provedor = select.provedor
+  this.solicitud.motivo = select.motivo
+  this.solicitud.area = select.area
+  this.solicitud.descripcion = select.descripcion
+  this.solicitud.observaciones = select.observaciones
+  this.solicitud.regresa = select.regresa
+  this.solicitud.autorizador = select.autorizador
+  this.solicitud.statusAprobacion = select.statusAprobacion
+  this.solicitud.comentariosAutorizador = select.comentariosAutorizador //
+  this.solicitud.fechaSalida = select.fechaSalida
+  this.solicitud.nombreProvedor = select.nombreProvedor
+  this.solicitud.validarSalida = select.validarSalida
+  this.solicitud.fechaCompromiso = select.fechaCompromiso
+  this.solicitud.comentariosCompras = select.comentariosCompras
+  this.solicitud.fechaRegreso = select.fechaRegreso
+  this.solicitud.comentariosRegreso = select.comentariosRegreso
+  this.solicitud.status2 = select.status2
+  this.solicitud.emailSent = select.emailSent
+  this.solicitud.historialCompras = 'true'
 
  
 }
@@ -87,6 +95,5 @@ clear(){
   this.solicitud.comentariosCompras = "";
 }
 }
-
 
 

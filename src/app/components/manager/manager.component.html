@@ -9,7 +9,7 @@
                 <tr>
                   
                   <th>ID</th>
-                  <th>Solicitante</th>
+                  <th class="solicitante">Solicitante</th>
                   <th>Fecha Solicitud</th>
                   <th>Para</th>
                   <th>Motivo Salida</th>
@@ -27,6 +27,7 @@
                   <th>Correo Solicitante</th>
                   <th>Status</th>
                   <th>mandar mail</th>
+                  <th>aprobación</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,6 +51,8 @@
                   <td>{{item.fechaRegreso}}</td>
                   <td>{{item.correoSolicitante}}</td>
                   <td>{{item.status2}}</td>
+                  <td>{{item.statusAprobacion}}</td>
+                  
                   <td><a type="button" class="nav-link active"  routerLink="authorize/{{item.id_solicitud}}" >Mostrar datos</a></td>
                 </tr>   
               </tbody>

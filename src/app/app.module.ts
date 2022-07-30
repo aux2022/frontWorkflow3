@@ -1,19 +1,17 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PagesModule } from './pages/pages.module';
-import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { AppRoutingModule } from './app-routing.module'
+import { AppComponent } from './app.component'
+import { HttpClientModule } from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { PagesModule } from './pages/pages.module'
+import { RouterModule } from '@angular/router'
 // RECOMMENDED
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { CargarScriptsService } from './cargar-scripts.service';
+import { ModalModule } from 'ngx-bootstrap/modal'
+import { CargarScriptsService } from './cargar-scripts.service'
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,11 +19,9 @@ import { CargarScriptsService } from './cargar-scripts.service';
     PagesModule,
     RouterModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
-    
-  
+    ModalModule.forRoot(),
   ],
   providers: [CargarScriptsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

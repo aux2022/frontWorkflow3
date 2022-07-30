@@ -3,47 +3,26 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { param } from 'jquery';
 import { Solicitud } from 'src/app/models/solicitud';
 import { SolicitudService } from 'src/app/services/solicitud.service'; 
-//importamos los modulos para formularios
-//import { FormBuilder, FormGroup } from '@angular/forms';
+import { HistorialComentarios } from '../../models/historialComentarios';
 declare var window: any;
 @Component({
-  selector: 'app-autorizar',
-  templateUrl: './autorizar.component.html',
-  styleUrls: ['./autorizar.component.css']
+  selector: 'app-view-hitori-com',
+  templateUrl: './view-hitori-com.component.html',
+  styleUrls: ['./view-hitori-com.component.css']
 })
-export class AutorizarComponent implements OnInit {
+export class ViewHitoriComComponent implements OnInit {
   formModal: any;//1
   solicitud:Solicitud = new Solicitud();
   //public editForm: FormGroup;
   postRef:any;
   datatable:any=[];
+  datatablecomen:any=[];
   //arreglo
- Serv:Solicitud={
-   id_solicitud: 0,
-   solicitante: '',
-   fechaSolicitud: '',
-   provedor: '',
-   motivo: '',
-   tipoTicket:'',
-   area: '',
-   descripcion: '',
-   observaciones: '',
-   autorizador: '',
-   comentariosAutorizador: '',
-   fechaSalida: '',
-   nombreProvedor: '',
-   comentariosCompras: '',
-   historialCompras:'',
-   fechaRegreso: '',
-   status2: '',
-   regresa: '',
-   validarSalida: '',
-   fechaCompromiso: '',
-   comentariosRegreso: '',
-   correoSolicitante: '',
-   emailSent: '',
-   statusAprobacion: ''
-   
+ Serv:HistorialComentarios={
+  id_solicitud: 0,
+  id_comentarios:0 ,
+   fecha:'',
+   mensajeHistorial:''   
  };
  
   constructor( 
@@ -61,17 +40,17 @@ export class AutorizarComponent implements OnInit {
     this.formModal.hide();
   }//4
   ngOnInit(): void {
-    
-    this.onDataTable();
+    this.onDataTable()
+  
     this.route.paramMap.subscribe({
       next:(params)=>{
         const id = params.get('id')
     
         if(id){
-          this.solicitudService.getByIdSolicitud(id)
+          this.solicitudService.getByIdHistorial(id)
           .subscribe({
     next:response => {
-    this.datatable=response;
+    this.datatablecomen=response;
    
     
     }
@@ -86,10 +65,10 @@ export class AutorizarComponent implements OnInit {
       next:(params)=>{
        const id = params.get('id')
        if(id){
-        this.solicitudService.getByIdSolicitud(id)
+        this.solicitudService.getByIdHistorial(id)
         .subscribe({
           next: (response)=>{
-this.Serv=response;
+           this.Serv=response;
           }
         })
        }
@@ -99,12 +78,17 @@ this.Serv=response;
 }
 
 
-
+onDataTableComen() {
+  this.solicitudService.getComentarios().subscribe((res) => {
+    this.datatablecomen = res
+    console.log('a', res, this.solicitud.status2)
+  })
+}
 
 onDataTable()
 {
-this.solicitudService.getSolicitud().subscribe(res=>{
-  this.datatable=res;
+this.solicitudService.getComentarios().subscribe(res=>{
+  this.datatablecomen=res;
   console.log(res);
 });
 
@@ -175,18 +159,5 @@ onUpdateSalida(solicitud:Solicitud):void{
     }
   });
 }
-
-//  onUpdateMascota(solicitud:Solicitud):void{
-//    solicitud.id_solicitud=parseInt((document.getElementById("id") as HTMLInputElement).value)
-//    console.log("cccc",solicitud.id_solicitud)
-//    this.solicitudService.updateSolicitud(solicitud.id_solicitud, solicitud).subscribe(res => {
-//      if(res){
-//        alert(`La mascota número ${solicitud.id_solicitud} se ha modificado con exito!`);
-//        console.log("cccc",solicitud)
-//      } else {
-//        alert('Error! :(')
-//      }
-//    });
-//  }
 
 }
