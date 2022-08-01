@@ -11,14 +11,16 @@ export class SolicitudService {
 
   //urlSolicitud:string="http://172.16.200.62:8085/api/Solicitud";
   //urlHistorialComenta:string=""
-  urlSolicitud:string="http://192.168.0.103:8085/api/Solicitud";
-  urlHistorialComenta:string="http://192.168.0.103:8085/api/historial"
-  //url: string = 'http://172.16.200.65:8083/Api/Solicitud'
+  urlSolicitud:string="http://172.16.200.79:8085/api/Solicitud";  //para la solicitud
+  urlHistorialComenta:string="http://172.16.200.79:8085/api/historial";  //para el historial
+  urlVigilance: string = "http://172.16.200.79:8085/Api/Vigilance";  //para vigilancia
   //url:string="http://https://172.16.200.24:44347/api/Solicitud";
   getSolicitud() {
     return this.http.get(this.urlSolicitud)
   }
-
+  GetVigilance() {
+    return this.http.get(this.urlVigilance)
+  }
   addSolicitud(solicitud: Solicitud): Observable<Solicitud> {
     return this.http.post<Solicitud>(this.urlSolicitud, solicitud)
   }

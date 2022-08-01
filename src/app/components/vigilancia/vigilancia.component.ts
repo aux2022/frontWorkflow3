@@ -16,14 +16,14 @@ export class VigilanciaComponent implements OnInit {
     private solicitudService: SolicitudService,
     private _CargarScripts: CargarScriptsService,
   ) {
-    _CargarScripts.carga(['tabla_filtros'])
+    _CargarScripts.carga(['pruebasS'])
   }
 
   ngOnInit(): void {
     this.onDataTable()
   }
   onDataTable() {
-    this.solicitudService.getSolicitud().subscribe((res) => {
+    this.solicitudService.GetVigilance().subscribe((res) => {
       this.datatable = res
       console.log(res)
     })

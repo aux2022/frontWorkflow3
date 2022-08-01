@@ -19,7 +19,7 @@ import { CargarScriptsService } from './cargar-scripts.service'
     PagesModule,
     RouterModule,
     ReactiveFormsModule,
-    ModalModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [CargarScriptsService],
   bootstrap: [AppComponent],

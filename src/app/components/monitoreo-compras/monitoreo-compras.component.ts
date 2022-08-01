@@ -14,7 +14,7 @@ export class MonitoreoComprasComponent implements OnInit {
   datatable:any=[];
   title:any="";
   formModal: any;//1
-  constructor(private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) {_CargarScripts.carga(["tabla_filtros"]) }
+  constructor(private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) {_CargarScripts.carga(["pruebasS"]) }
 
   ngOnInit(): void {
     this.formModal = new window.bootstrap.Modal(

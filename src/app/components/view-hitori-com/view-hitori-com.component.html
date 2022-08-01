@@ -1,51 +1,41 @@
-<div class="navega card-header">
-    <h5 class="text-center">Datos de la Solicitud</h5>
+
+
+  
+<br>
+
+ 
+ 
+<!--tabla nueva-->
+<div class="container">
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="serch input-group-text" id="inputGroup-sizing-sm"><i class="fa-solid fa-magnifying-glass"></i></span>
+    </div>
+    <input type="text" class=" form-control" aria-label="Small" id="search" placeholder="buscar un registro...">
   </div>
-  <html>
-    <body>
-      <div class="card text-center">
-        <div class="card-body" >
-          
-    <div class="input-group-lg">
+  <div class="table-responsive">
+    <table class="table" id="tblDatos">
      
-
-
-        <table
-        id="example"
-        style="width: 100%;"
-        class="table table-striped table-bordered"
-      >
         <thead>
-          <tr class="table-info">
-            <th>id_comentarios</th>
-            <th>id_solicitud</th>
-            <th>Solicitante</th>
-            <th>Área</th>
+          <tr>
+            <th class="id">id_solicitud</th>
+            <th class="cabezaras">Solicitante</th>
+            <th class="cabezaras">Área</th>
             
          
           </tr>
         </thead>
-        <tbody class="table table-bordered">
-          <tr *ngFor="let item of datatablecomen" style="width: 100%;">
-            <td>{{ item.id_comentarios }}</td>
-            <td>{{ item.id_solicitud }}</td>
-            <td>{{ item.fecha }}</td>
-            <td>{{ item.mensajeHistorial }}</td>
-            
-         
-          </tr>
-        </tbody>
-      </table>
-    
-    
-        </div>
-        </div>
-        <!--aqui-->
-        <div></div>
-      </div>
-  
-      <div class="card-footer text-muted card1">
-        <h5 class="text-center">Autoriza @Autorizador</h5>
-      </div>
-    </body>
-  </html>
+      <tbody class="table table-bordered">
+        <tr *ngFor="let item of datatablecomen" style="width: 100%;">
+          
+          <td class="id"> {{ item.id_solicitud }}</td>
+          <td>{{ item.fecha }}</td>
+          <td>{{ item.mensajeHistorial }}</td>
+          
+       
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="paginador"></div>
+</div> 

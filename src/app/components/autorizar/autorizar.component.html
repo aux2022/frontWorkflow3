@@ -22,7 +22,7 @@
         </p>
         <p class="card-text">
           Provedor:
-          <b>{{ item.nombreProvedor }}</b>
+          <b>{{ item.provedor }}</b>
         </p>
         <p class="card-text">
           Motivo Salida:
@@ -110,7 +110,7 @@
           <button
             type="button"
             id="rechazado"
-            (click)="onSetData2(item); onUpdateSalida(solicitud)"
+            (click)="openModal(template); onSetData2(item);"
             class="btn btn-danger"
           >
             Rechazar Solicitud
@@ -122,8 +122,65 @@
       <div></div>
     </div>
 
-    <div class="card-footer text-muted card1">
-      <h5 class="text-center">Autoriza @Autorizador</h5>
+    <!--modal para  salida de activo-->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Rechazar solicitud</h4>
+    <button
+      type="button"
+      class="close pull-rigth"
+      aria-label="Close"
+      (click)="bsModalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!--inicio-->
+  <div class="row-6 mt-5">
+    <div class="input-group mb-3 input-group-lg">
+      <span class="input-group-text" id="basic-addon1">Núm. solicitud:</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="id"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+        name="id"
+        id="txtid"
+        [(ngModel)]="solicitud.id_solicitud"
+        disabled="disabled"
+      />
     </div>
+
+
+    <div class="input-group mb-3 input-group-lg">
+      <span class="input-group-text" id="basic-addon1">
+        Comentarios:
+      </span>
+      <textarea
+        type="text"
+        class="form-control"
+        placeholder="Motivo"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+        name="NombreProvedor"
+        id="txt"
+        [(ngModel)]="solicitud.comentariosAutorizador"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="d-grid gap-2">
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="saveSomeThing();  onUpdateSalida(solicitud)"
+    >
+      Rechazar
+    </button>
+  </div>
+  <!--fin-->
+</ng-template>
+<!--modal para  salida de activo-->
   </body>
 </html>

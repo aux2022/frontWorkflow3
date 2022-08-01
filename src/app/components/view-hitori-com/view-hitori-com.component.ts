@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { param } from 'jquery';
+import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 import { Solicitud } from 'src/app/models/solicitud';
 import { SolicitudService } from 'src/app/services/solicitud.service'; 
 import { HistorialComentarios } from '../../models/historialComentarios';
@@ -31,10 +32,10 @@ export class ViewHitoriComComponent implements OnInit {
     public route: ActivatedRoute,
     private router: Router,
     
-    
-    ) { 
+    private _CargarScripts:CargarScriptsService) {_CargarScripts.carga(["pruebasS"]) }
+
   
-  }
+  
   saveSomeThingSA() {
     // confirm or save something
     this.formModal.hide();

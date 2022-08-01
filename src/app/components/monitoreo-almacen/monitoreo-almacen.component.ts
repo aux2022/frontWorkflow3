@@ -23,7 +23,7 @@ export class MonitoreoAlmacenComponent implements OnInit {
     private modalService: BsModalService,
     private _CargarScripts: CargarScriptsService,
   ) {
-    _CargarScripts.carga(['tabla_filtros'])
+    _CargarScripts.carga(['pruebasS'])
   }
 
   ngOnInit(): void {

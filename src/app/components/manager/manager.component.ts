@@ -14,6 +14,7 @@ export class ManagerComponent implements OnInit {
   solicitud:Solicitud = new Solicitud();
   datatable:any=[];
   title:any="";
+  crack:string="";
   solicitudesDetails:Solicitud={
     id_solicitud: 0,
     solicitante: "",
@@ -40,7 +41,7 @@ export class ManagerComponent implements OnInit {
     emailSent: '',
     statusAprobacion:'' 
   }
-  constructor(private route:ActivatedRoute,private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) { _CargarScripts.carga(["tabla_filtros"])}
+  constructor(private route:ActivatedRoute,private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) { _CargarScripts.carga(["pruebasS"])}
   
   ngOnInit(): void {
     

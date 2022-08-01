@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { param } from 'jquery';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Solicitud } from 'src/app/models/solicitud';
 import { SolicitudService } from 'src/app/services/solicitud.service'; 
 //importamos los modulos para formularios
@@ -18,6 +19,8 @@ export class AutorizarComponent implements OnInit {
   postRef:any;
   datatable:any=[];
   //arreglo
+  public titles = ''
+  bsModalRef: BsModalRef = new BsModalRef()
  Serv:Solicitud={
    id_solicitud: 0,
    solicitante: '',
@@ -49,6 +52,7 @@ export class AutorizarComponent implements OnInit {
   constructor( 
     public solicitudService:SolicitudService,
     //public formBuilder:FormBuilder,
+    private modalService: BsModalService,
     public route: ActivatedRoute,
     private router: Router,
     
@@ -56,10 +60,13 @@ export class AutorizarComponent implements OnInit {
     ) { 
   
   }
-  saveSomeThingSA() {
+  openModal(template: TemplateRef<any>) {
+    this.bsModalRef = this.modalService.show(template)
+  }
+  saveSomeThing() {
     // confirm or save something
-    this.formModal.hide();
-  }//4
+    this.bsModalRef.hide()
+  } //4
   ngOnInit(): void {
     
     this.onDataTable();

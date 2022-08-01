@@ -1,47 +1,47 @@
 <app-navbar></app-navbar>
+<br>
 
-<div class="navega card-header">
-  <a class="leter nav-link" href="#">
-    <i class="fas fa-home-lg-alt"></i>
-    Inicio >
-    <i class="navs">Monitoreo de almacén</i>
-  </a>
-</div>
+ 
+ 
+<!--tabla nueva-->
 
-<br />
-<div class="table-responsive">
-  <table
-    id="example"
-    style="width: 100%;"
-    class="table table-striped table-bordered"
-  >
+<div class="container">
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="serch input-group-text" id="inputGroup-sizing-sm"><i class="fa-solid fa-magnifying-glass"></i></span>
+    </div>
+    <input type="text" class=" form-control" aria-label="Small" id="search" placeholder="buscar un registro...">
+  </div>
+  <div class="table-responsive">
+    <table class="table" id="tblDatos">
+     
     <thead>
       <tr class="table-info">
-        <th>ID</th>
-        <th>Solicitante</th>
-        <th>Área</th>
-        <th>Fecha Solicitud</th>
-        <th>Motivo Salida</th>
-        <th>Descripción</th>
-        <th>Observaciones</th>
-        <th>Proveedor</th>
-        <th>Tipo de ticket</th>
-        <th>¿El artículo regresa?</th>
-        <th>Autorizador</th>
-        <th>Estatus de aprobación</th>
-        <!--<th>Comentarios autirizador</th>-->
-        <th>Fecha de salida</th>
-        <th>Fecha de Regreso</th>
-        <th>Comentarios Almacén</th>
-        <th>Fecha compromiso</th>
-        <th>Status</th>
-        <th>Comentarios compras</th>
-        <th></th>
+        <th class="id">#</th>
+        <th class="cabezaras">Solicitante</th>
+        <th class="cabezaras">Área</th>
+        <th class="cabezaras">Fecha Solicitud</th>
+        <th class="cabezaras">Motivo Salida</th>
+        <th class="cabezaras">Descripción</th>
+        <th class="cabezaras">Observaciones</th>
+        <th class="cabezaras">Proveedor</th>
+        <th class="cabezaras">Tipo de ticket</th>
+        <th class="cabezaras">¿El artículo regresa?</th>
+        <th class="cabezaras">Autorizador</th>
+        <th class="cabezaras">Estatus de aprobación</th> 
+        
+        <th class="cabezaras">Fecha de salida</th>
+        <th class="cabezaras">Fecha de Regreso</th>
+        <th class="cabezaras">Comentarios Almacén</th>
+        <th class="cabezaras">Fecha compromiso</th>
+        <th class="cabezaras">Status</th>
+        <th class="cabezaras">Comentarios compras</th>
+        <th class="cabezaras"></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of datatable" style="width: 100%;">
-        <td>{{ item.id_solicitud }}</td>
+        <td class="id">{{ item.id_solicitud }}</td>
         <td>{{ item.solicitante }}</td>
         <td>{{ item.area }}</td>
         <td>{{ item.fechaSolicitud }}</td>
@@ -160,8 +160,13 @@
         </ng-template>
       </tr>
     </tbody>
-  </table>
-</div>
+    </table>
+  </div>
+  <div id="paginador"></div>
+</div> 
+
+
+<!--tabla nueva-->
 
 <!--modales-->
 <!--modal para  salida de activo-->

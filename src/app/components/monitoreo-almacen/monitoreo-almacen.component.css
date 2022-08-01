@@ -1,79 +1,114 @@
-
-
-
-/* 
-
-.textS{
-    color: green;
-}
-.textR{
-  color: blue;  
-}
-.textS:hover{
-    color: rgb(255, 255, 255);
-}
-.textR:hover{
-  color: rgb(255, 255, 255);  
-}
-.back{
-  position: sticky;
-  
-}
-.back:hover{
-
-  background-color: rgb(245, 150, 150);
-}
-
-.container {
-  text-align: center;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgb(255, 0, 0);
-}
-
-.table-hover tbody tr:hover {
-  background-color: rgba(0, 153, 255, 0.404);
-  color: rgb(112, 24, 78);
-}
-
-.thead-green {
-  background-color: rgb(0, 92, 99);
-  color: white;
-  
-}
-
-.far{
+table tr th {
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.gree-icon{
-  color: #198754;
+.sorting {
+  background-color: #D4D4D4;
 }
-.red-icon{
-  color: #dc3545;
+.asc:after {
+  content: ' ↑';
 }
-
-
- 
-.container {
-text-align: center;
+.desc:after {
+  content: " ↓";
 }
-
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgb(235, 235, 235);
-}
-
-.table-striped tbody tr:nth-of-type(odd):hover {
-  background-color: rgba(0, 153, 255, 0.404);
+.pag_btn {
+  border: solid 1px;
+  border-color: rgb(0, 0, 255);
+  color: rgb(0, 0, 255);
+  background-color: rgb(255, 255, 255);
 }
 
-
-
-.thead-blue {
-background-color: rgb(0, 63, 99);
-color: white;
+.pag_btn_des {
+  border: solid 1px;
+  border-color: rgb(200, 200, 200);
+  color: rgb(200, 200, 200);
+  background-color: rgb(245, 245, 245);
 }
-.div1{
 
-  background-color: rgb(217, 235, 235);
-}  */
+.pag_num {
+  border: solid 1px;
+  border-color: rgb(0, 0, 255);
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 255);
+}
+.dropdown-check-list {
+  display: inline-block;
+}
+
+.dropdown-check-list .anchor {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 50px 5px 10px;
+  border: 1px solid #ccc;
+}
+
+.dropdown-check-list .anchor:after {
+  position: absolute;
+  content: "";
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  padding: 5px;
+  right: 10px;
+  top: 20%;
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+.dropdown-check-list .anchor:active:after {
+  right: 8px;
+  top: 21%;
+}
+
+.dropdown-check-list ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.dropdown-check-list ul.items li {
+  list-style: none;
+}
+
+.dropdown-check-list.visible .anchor {
+  color: #0094ff;
+}
+
+.dropdown-check-list.visible .items {
+  display: block;
+}
+
+
+#titulo { color: #000000; } 
+#titulo:hover { color: #FF0000; } 
+.tarjeta{
+  background-color: aliceblue;
+}
+.cabezaras{
+  background-color: rgb(0, 140, 255);
+}
+
+.id{
+  background-color: #f8c1c1;
+}
+.navega{
+  background-color: rgba(231, 226, 226, 0.295);
+}
+.navega2{
+  background-color: w;
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+  body {
+    background-image: url('/assets/vigil.jpg');
+    position: -webkit-sticky;
+    position: sticky;
+  }
