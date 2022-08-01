@@ -69,7 +69,7 @@ export class AutorizarComponent implements OnInit {
   } //4
   ngOnInit(): void {
     
-    this.onDataTable();
+
     this.route.paramMap.subscribe({
       next:(params)=>{
         const id = params.get('id')

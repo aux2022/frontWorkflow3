@@ -93,7 +93,10 @@ table tr th {
   background-color: aliceblue;
 }
 .cabezaras{
-  background-color: rgb(0, 140, 255);
+  background-color:#212529;
+  color:white;
+  font-size: small;
+  align-items: left;
 }
 
 .id{
