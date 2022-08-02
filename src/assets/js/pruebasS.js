@@ -90,7 +90,7 @@ Paginador = function(divPaginador, tabla, tamPagina)
  
         //Ahora, agregar las celdas que serán los controles
         var ant = fil.insertCell(fil.cells.length);
-        ant.innerHTML = '<button class="btn btn-secondary btn-sm">Anterior</button>';
+        ant.innerHTML = '<button class="btn btn-secondary btn-sm"><i class="fas fa-angle-left"></i> Anterior</button>';
         ant.className = 'pag_btn'; //con eso le asigno un estilo
         var self = this;
         ant.onclick = function()
@@ -105,7 +105,7 @@ Paginador = function(divPaginador, tabla, tamPagina)
         num.className = '<b>pag_num</b>';
  
         var sig = fil.insertCell(fil.cells.length);
-        sig.innerHTML = '<button class="btn btn-secondary btn-sm">Siguiente</button>';
+        sig.innerHTML = '<button class="btn btn-secondary btn-sm">Siguiente <i class="fas fa-angle-right"></i></button>';
         sig.className = 'pag_btn';
         
         sig.onclick = function()

@@ -12,6 +12,9 @@ import * as XLSX from 'xlsx';
 export class MonitoreoComprasComponent implements OnInit {
   solicitud:Solicitud = new Solicitud();
   datatable:any=[];
+  datatableterminadas:any=[];
+  datatablerechazadas:any=[];
+  datatableProceso:any=[];
   title:any="";
   formModal: any;//1
   constructor(private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) {_CargarScripts.carga(["pruebasS"]) }
@@ -21,6 +24,9 @@ export class MonitoreoComprasComponent implements OnInit {
       document.getElementById('myModal')
     );//2
     this.onDataTable();
+    this.onDataTableProceso();
+    this.onDataTableRechazadas();
+    this.onDataTableTerminadas();
   }
   openFormModal() {
     this.formModal.show();
@@ -33,6 +39,29 @@ export class MonitoreoComprasComponent implements OnInit {
 {
 this.solicitudService.getSolicitud().subscribe(res=>{
   this.datatable=res;
+});
+
+}
+onDataTableProceso()
+{
+this.solicitudService.GetSolicitudAceptInProcess().subscribe(res=>{
+  this.datatableProceso=res;
+  console.log(res);
+});
+
+}
+onDataTableTerminadas()
+{
+this.solicitudService.GetSolicitudTerminadas().subscribe(res=>{
+  this.datatableterminadas=res;
+  console.log(res);
+});
+
+}
+onDataTableRechazadas()
+{
+this.solicitudService.GetSolicitudRechazadas().subscribe(res=>{
+  this.datatablerechazadas=res;
   console.log(res);
 });
 
@@ -44,8 +73,11 @@ onUpdateMonitoreoC(solicitud:Solicitud):void{
     if(res){
       // this.toastr.info(`La persona número ${solicitud.id} se ha modificado con exito!`);
   
-      this.clear();
+    
       this.onDataTable();
+      this.onDataTableTerminadas();
+      this.onDataTableRechazadas();
+      this.onDataTableProceso();
     } else {
       alert('Error! :(')
     }
@@ -90,10 +122,7 @@ name = 'DATA.xlsx';
 
     XLSX.writeFile(book, this.name);
   }
-clear(){
-  this.solicitud.id_solicitud=0;
-  this.solicitud.comentariosCompras = "";
-}
+
 }
 
 

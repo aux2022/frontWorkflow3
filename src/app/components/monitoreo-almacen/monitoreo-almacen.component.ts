@@ -14,10 +14,14 @@ declare var window: any
 export class MonitoreoAlmacenComponent implements OnInit {
   solicitud: Solicitud = new Solicitud()
   datatable: any = []
+  datatableterminadas:any=[];
+  datatablerechazadas:any=[];
+  datatableProceso:any=[];
   title: any = ''
   formModal: any //1
   public titles = ''
   bsModalRef: BsModalRef = new BsModalRef()
+  bsModalRef1: BsModalRef = new BsModalRef()
   constructor(
     private solicitudService: SolicitudService,
     private modalService: BsModalService,
@@ -27,8 +31,37 @@ export class MonitoreoAlmacenComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.onDataTable()
+    this.onDataTable();
+    this.onDataTableProceso();
+    this.onDataTableRechazadas();
+    this.onDataTableTerminadas();
   }
+
+  
+onDataTableProceso()
+{
+this.solicitudService.GetSolicitudAceptInProcess().subscribe(res=>{
+  this.datatableProceso=res;
+  console.log(res);
+});
+
+}
+onDataTableTerminadas()
+{
+this.solicitudService.GetSolicitudTerminadas().subscribe(res=>{
+  this.datatableterminadas=res;
+  console.log(res);
+});
+
+}
+onDataTableRechazadas()
+{
+this.solicitudService.GetSolicitudRechazadas().subscribe(res=>{
+  this.datatablerechazadas=res;
+  console.log(res);
+});
+
+}
 
 
  
@@ -36,7 +69,6 @@ export class MonitoreoAlmacenComponent implements OnInit {
   onDataTable() {
     this.solicitudService.getSolicitud().subscribe((res) => {
       this.datatable = res
-      console.log('a', res, this.solicitud.status2)
     })
   }
   onUpdateActivoR(solicitud: Solicitud): void {
@@ -44,10 +76,13 @@ export class MonitoreoAlmacenComponent implements OnInit {
       .updateSolicitud(solicitud.id_solicitud, solicitud)
       .subscribe((res) => {
         if (res) {
-          alert('Datos guardados!, los datos han sido guardados con exito.')
-          this.clear()
+          alert('La información ha sido guardada con exito!, la solicitud numero '+solicitud.id_solicitud+' ha terminado')
+      
 
           this.onDataTable()
+          this.onDataTableProceso();
+    this.onDataTableRechazadas();
+    this.onDataTableTerminadas();
         } else {
           alert('Error! :(')
         }
@@ -59,20 +94,46 @@ export class MonitoreoAlmacenComponent implements OnInit {
       .updateSolicitud(solicitud.id_solicitud, solicitud)
       .subscribe((res) => {
         if (res) {
-          alert('Datos guardados!, los datos han sido guardados con exito.')
+          alert('La información ha sido guardada con exito!, Esperando salida en vigilancia.')
 
-          this.clear()
+          
           this.onDataTable()
+          this.onDataTableProceso();
+    this.onDataTableRechazadas();
+    this.onDataTableTerminadas();
         } else {
           alert('Error! :(')
         }
       })
   }
-  clear() {
-    this.solicitud.id_solicitud = 0
-    this.solicitud.fechaRegreso = ''
-  }
+ 
   onSetData(select: any) {
+    this.solicitud.id_solicitud = select.id_solicitud
+  this.solicitud.solicitante = select.solicitante
+  this.solicitud.correoSolicitante = select.correoSolicitante
+  this.solicitud.fechaSolicitud = select.fechaSolicitud
+  this.solicitud.tipoTicket = select.tipoTicket
+  this.solicitud.provedor = select.provedor
+  this.solicitud.motivo = select.motivo
+  this.solicitud.area = select.area
+  this.solicitud.descripcion = select.descripcion
+  this.solicitud.observaciones = select.observaciones
+  this.solicitud.regresa = select.regresa
+  this.solicitud.autorizador = select.autorizador
+  this.solicitud.statusAprobacion = select.statusAprobacion
+  this.solicitud.comentariosAutorizador = select.comentariosAutorizador //
+  this.solicitud.fechaSalida = select.fechaSalida
+  this.solicitud.nombreProvedor = select.nombreProvedor
+  this.solicitud.validarSalida = select.validarSalida
+  this.solicitud.fechaCompromiso = select.fechaCompromiso
+  this.solicitud.comentariosCompras = select.comentariosCompras
+  this.solicitud.fechaRegreso = select.fechaRegreso
+  this.solicitud.comentariosRegreso = select.comentariosRegreso
+  this.solicitud.status2 = 'En reparación con'
+  this.solicitud.emailSent = select.emailSent
+  this.solicitud.historialCompras = select.historialCompras
+  }
+  onSetDataRegreso(select: any) {
     this.solicitud.id_solicitud = select.id_solicitud
     this.solicitud.solicitante = select.solicitante
     this.solicitud.correoSolicitante = select.correoSolicitante
@@ -94,35 +155,12 @@ export class MonitoreoAlmacenComponent implements OnInit {
     this.solicitud.comentariosCompras = select.comentariosCompras
     this.solicitud.fechaRegreso = select.fechaRegreso
     this.solicitud.comentariosRegreso = select.comentariosRegreso
-    this.solicitud.status2 = 'En reparación con'
-    this.solicitud.emailSent = select.emailSent
-    this.solicitud.historialCompras = select.historialCompras
-  }
-  onSetDataRegreso(select: any) {
-    this.solicitud.id_solicitud = select.id_solicitud
-    this.solicitud.solicitante = select.solicitante
-    this.solicitud.correoSolicitante = select.correoSolicitante
-    this.solicitud.fechaSolicitud = select.fechaSolicitud
-    this.solicitud.tipoTicket = select.tipoTicket
-    this.solicitud.nombreProvedor = select.nombreProvedor
-    this.solicitud.motivo = select.motivo
-    this.solicitud.area = select.area
-    this.solicitud.descripcion = select.descripcion
-    this.solicitud.observaciones = select.observaciones
-    this.solicitud.regresa = select.regresa
-    this.solicitud.autorizador = select.autorizador
-    this.solicitud.statusAprobacion = select.statusAprobacion
-    this.solicitud.comentariosAutorizador = select.comentariosAutorizador //
-    this.solicitud.fechaSalida = select.fechaSalida
-    this.solicitud.nombreProvedor = select.nombreProvedor
-    this.solicitud.validarSalida = select.validarSalida
-    this.solicitud.fechaCompromiso = select.fechaCompromiso
-    this.solicitud.comentariosCompras = select.comentariosCompras
-    this.solicitud.fechaRegreso = select.fechaRegreso
-    this.solicitud.comentariosRegreso = select.comentariosRegreso
     this.solicitud.status2 = 'Recibido en almacén'
     this.solicitud.emailSent = select.emailSent
     this.solicitud.historialCompras = select.historialCompras
+    
+    
+    
   }
 
   openModal(template: TemplateRef<any>) {
@@ -130,10 +168,15 @@ export class MonitoreoAlmacenComponent implements OnInit {
   }
 
   openModal1(template1: TemplateRef<any>) {
-    this.bsModalRef = this.modalService.show(template1)
+    this.bsModalRef1 = this.modalService.show(template1)
   }
   saveSomeThing() {
     // confirm or save something
     this.bsModalRef.hide()
   } //4
+  saveSomeThing1() {
+    // confirm or save something
+    this.bsModalRef1.hide()
+  } //4
+  
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit,TemplateRef } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
-import { param } from 'jquery';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Solicitud } from 'src/app/models/solicitud';
 import { SolicitudService } from 'src/app/services/solicitud.service'; 
@@ -119,81 +118,101 @@ this.solicitudService.getSolicitud().subscribe(res=>{
 
 onSetData1(select:any){
   
-  this.solicitud.id_solicitud=select.id_solicitud
-  this.solicitud.solicitante=select.solicitante
-  this.solicitud.fechaSolicitud=select.fechaSolicitud
-  this.solicitud.motivo=select.motivo
-  this.solicitud.tipoTicket=select.tipoTicket
-  this.solicitud.area=select.area
-  this.solicitud.descripcion=select.descripcion
-  this.solicitud.observaciones=select.observaciones
-  this.solicitud.autorizador=select.autorizador
+  this.solicitud.id_solicitud = select.id_solicitud
+  this.solicitud.solicitante = select.solicitante
+  this.solicitud.correoSolicitante = select.correoSolicitante
+  this.solicitud.fechaSolicitud = select.fechaSolicitud
+  this.solicitud.tipoTicket = select.tipoTicket
+  this.solicitud.provedor = select.provedor
+  this.solicitud.nombreProvedor = select.nombreProvedor
+  this.solicitud.motivo = select.motivo
+  this.solicitud.area = select.area
+  this.solicitud.descripcion = select.descripcion
+  this.solicitud.observaciones = select.observaciones
+  this.solicitud.regresa = select.regresa
+  this.solicitud.autorizador = select.autorizador
   this.solicitud.statusAprobacion="Aprobada"
-  this.solicitud.comentariosAutorizador=select.comentariosAutorizador
-  this.solicitud.fechaSalida=select.fechaSalida
-  this.solicitud.nombreProvedor=select.nombreProvedor//
-  this.solicitud.comentariosCompras=select.comentariosCompras
-  this.solicitud.fechaRegreso=select.fechaRegreso
+  this.solicitud.comentariosAutorizador = select.comentariosAutorizador //
+  this.solicitud.fechaSalida = select.fechaSalida
+  this.solicitud.validarSalida = select.validarSalida
+  this.solicitud.fechaCompromiso = select.fechaCompromiso
+  this.solicitud.comentariosCompras = select.comentariosCompras
+  this.solicitud.fechaRegreso = select.fechaRegreso
+  this.solicitud.comentariosRegreso = select.comentariosRegreso
   this.solicitud.status2="Autorizado"
-  this.solicitud.validarSalida=select.validarSalida
-  this.solicitud.fechaCompromiso=select.fechaCompromiso
-  this.solicitud.comentariosRegreso=select.comentariosRegreso
-  this.solicitud.correoSolicitante=select.correoSolicitante
-  this.solicitud.emailSent=select.emailSent
-  
- 
-}
-onSetData2(select:any){
-  this.solicitud.id_solicitud=select.id_solicitud
-  this.solicitud.solicitante=select.solicitante
-  this.solicitud.fechaSolicitud=select.fechaSolicitud
-  this.solicitud.motivo=select.motivo
-  this.solicitud.tipoTicket=select.tipoTicket
-  this.solicitud.area=select.area
-  this.solicitud.descripcion=select.descripcion
-  this.solicitud.observaciones=select.observaciones
-  this.solicitud.autorizador=select.autorizador
-  this.solicitud.statusAprobacion="Rechazada"
-  this.solicitud.comentariosAutorizador=select.comentariosAutorizador
-  this.solicitud.fechaSalida=select.fechaSalida
-  this.solicitud.nombreProvedor=select.nombreProvedor//
-  this.solicitud.comentariosCompras=select.comentariosCompras
-  this.solicitud.fechaRegreso=select.fechaRegreso
-  this.solicitud.status2="No se autorizo"
-  this.solicitud.validarSalida=select.validarSalida
-  this.solicitud.fechaCompromiso=select.fechaCompromiso
-  this.solicitud.comentariosRegreso=select.comentariosRegreso
-  this.solicitud.correoSolicitante=select.correoSolicitante
-  this.solicitud.emailSent=select.emailSent
+  this.solicitud.emailSent = select.emailSent
+  this.solicitud.historialCompras = select.historialCompras}
 
-}
+
+
+  onSetData2(select:any){
+
+    this.solicitud.id_solicitud = select.id_solicitud
+    this.solicitud.solicitante = select.solicitante
+    this.solicitud.correoSolicitante = select.correoSolicitante
+    this.solicitud.fechaSolicitud = select.fechaSolicitud
+    this.solicitud.tipoTicket = select.tipoTicket
+    this.solicitud.provedor = select.provedor
+    this.solicitud.nombreProvedor = select.nombreProvedor
+    this.solicitud.motivo = select.motivo
+    this.solicitud.area = select.area
+    this.solicitud.descripcion = select.descripcion
+    this.solicitud.observaciones = select.observaciones
+    this.solicitud.regresa = select.regresa
+    this.solicitud.autorizador = select.autorizador
+    this.solicitud.statusAprobacion="Rechazada"
+    this.solicitud.comentariosAutorizador = select.comentariosAutorizador //
+    this.solicitud.fechaSalida = select.fechaSalida
+    this.solicitud.validarSalida = select.validarSalida
+    this.solicitud.fechaCompromiso = select.fechaCompromiso
+    this.solicitud.comentariosCompras = select.comentariosCompras
+    this.solicitud.fechaRegreso = select.fechaRegreso
+    this.solicitud.comentariosRegreso = select.comentariosRegreso
+    this.solicitud.status2="No se autorizo"
+    this.solicitud.emailSent = select.emailSent
+    this.solicitud.historialCompras = select.historialCompras}
+
 onUpdateSalida(solicitud:Solicitud):void{
+  if((document.getElementById('txtMotivo') as HTMLInputElement).value==='' ){
+alert('Por favor, agrega un comentario para continuar')
+  }else{
+    this.solicitudService.updateSolicitud(solicitud.id_solicitud, solicitud).subscribe(res => {
   
-  this.solicitudService.updateSolicitud(solicitud.id_solicitud, solicitud).subscribe(res => {
+      if(res){
+        location.reload()
+        alert('Se registro sú respuesta!!,  Notificando....')
+    
+       
+        //this.onDataTable();
+      } else {
+        alert('Error! :(')
+      }
+    });
+this.saveSomeThing();
+  }
   
-    if(res){
-      location.reload()
-      alert('Datos guardados!, los datos han sido guardados con exito.')
-  
-     
-      //this.onDataTable();
-    } else {
-      alert('Error! :(')
-    }
-  });
 }
 
-//  onUpdateMascota(solicitud:Solicitud):void{
-//    solicitud.id_solicitud=parseInt((document.getElementById("id") as HTMLInputElement).value)
-//    console.log("cccc",solicitud.id_solicitud)
-//    this.solicitudService.updateSolicitud(solicitud.id_solicitud, solicitud).subscribe(res => {
-//      if(res){
-//        alert(`La mascota número ${solicitud.id_solicitud} se ha modificado con exito!`);
-//        console.log("cccc",solicitud)
-//      } else {
-//        alert('Error! :(')
-//      }
-//    });
-//  }
+
+onUpdateSalida1(solicitud:Solicitud):void{
+
+
+  {
+    this.solicitudService.updateSolicitud(solicitud.id_solicitud, solicitud).subscribe(res => {
+  
+      if(res){
+        location.reload()
+        alert('Se registro sú respuesta!!,  Notificando....')
+    
+       
+        //this.onDataTable();
+      } else {
+        alert('Error! :(')
+      }
+    });
+
+  
+}}
+
 
 }

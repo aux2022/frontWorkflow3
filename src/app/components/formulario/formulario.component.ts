@@ -84,10 +84,8 @@ export class FormularioComponent implements OnInit {
       ) as HTMLInputElement).value
       this.solicitudService.addSolicitud(solicitud).subscribe((res) => {
         if (res) {
-          console.log('hola2')
-          alert(
-            `La solicitud${this.solicitud.id_solicitud} se ha registrado con exito!`,
-          )
+          
+          alert('la solicitud ha sido registrada!!,  Notificación enviada.')
           this.clear()
           this.onDataTable()
           window.location.reload()

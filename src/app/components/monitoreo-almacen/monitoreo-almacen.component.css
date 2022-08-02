@@ -93,11 +93,18 @@ table tr th {
   background-color: aliceblue;
 }
 .cabezaras{
-  background-color: rgb(0, 140, 255);
+  background-color:#212529;
+  color:white;
+  font-size: small;
+  align-items: left;
 }
 
 .id{
-  background-color: #f8c1c1;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background-color:  #ccc;
 }
 .navega{
   background-color: rgba(231, 226, 226, 0.295);
@@ -107,8 +114,16 @@ table tr th {
   box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-  body {
-    background-image: url('/assets/vigil.jpg');
-    position: -webkit-sticky;
-    position: sticky;
-  }
+ 
+th:first-child {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: #ccc;
+}
+thead th:first-child,
+tfoot th:first-child {
+  z-index: 5;
+}
+

@@ -23,6 +23,7 @@
           placeholder="Nombre del solicitante"
           name="solicitante"
           [(ngModel)]="solicitud.solicitante"
+          required="required"
         />
         <datalist id="items">
           <option>Arturo Carrazco</option>
@@ -35,7 +36,7 @@
       <div class="input-group flex-nowrap">
         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
         <input
-          type="text"
+          type="email"
           class="f1 form-control"
           placeholder="e-mail"
           name="proveedor"
@@ -197,7 +198,7 @@
           th:field="*{discounted}"
         />
         <label class="form-check-label" for="flexRadioDefault1">
-          El activo regresará
+          El artículo regresará
         </label>
       </div>
       <br />
@@ -211,7 +212,7 @@
           th:field="*{discounted}"
         />
         <label class="form-check-label" for="flexRadioDefault2">
-          El activo no regresará
+          El artículo no regresará
         </label>
       </div>
       <!--regreso-->

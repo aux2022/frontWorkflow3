@@ -18,9 +18,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  iniciarSesion() {
-    if (this.user === 'admin' && this.pass === 'admin') {
-      this.router.navigate(['http://172.16.200.74:4200/manager'])
+  login() {
+    if ((document.getElementById('idUsername') as HTMLInputElement).value ==='manager' && (document.getElementById('idPassword') as HTMLInputElement).value==='sa' ){
+      this.router.navigate(['./form'])
+      console.log('hi')
+    } else{
+      alert('Credenciales incorrectas')
     }
   }
+  
 }

@@ -102,7 +102,7 @@
             id="aprobado"
             class="btn btn-primary"
             value="false"
-            (click)="onSetData1(item); onUpdateSalida(solicitud)"
+            (click)="onSetData1(item); onUpdateSalida1(solicitud)"
           >
             Aprobar Solicitud
           </button>
@@ -164,9 +164,9 @@
         aria-label="Username"
         aria-describedby="basic-addon1"
         name="NombreProvedor"
-        id="txt"
+        id="txtMotivo"
         [(ngModel)]="solicitud.comentariosAutorizador"
-      ></textarea>
+      required="required"></textarea>
     </div>
   </div>
 
@@ -174,7 +174,7 @@
     <button
       type="button"
       class="btn btn-danger"
-      (click)="saveSomeThing();  onUpdateSalida(solicitud)"
+      (click)="onUpdateSalida(solicitud)"
     >
       Rechazar
     </button>
