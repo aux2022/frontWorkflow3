@@ -8,28 +8,26 @@ import { VigilanciaComponent } from './components/vigilancia/vigilancia.componen
 import { MonitoreoComprasComponent } from './components/monitoreo-compras/monitoreo-compras.component'
 import { ManagerComponent } from './components/manager/manager.component'
 import { MonitoreoAlmacenComponent } from './components/monitoreo-almacen/monitoreo-almacen.component'
-import { BloquearAcesoGuard } from './components/guards/bloquear-aceso.guard'
+
 import { MostrarDatosComponent } from './components/mostrar-datos/mostrar-datos.component'
 import { VistaGeneralComponent } from './components/vista-general/vista-general.component'
 import { ViewHitoriComComponent } from './components/view-hitori-com/view-hitori-com.component';
+import { BloquearAcesoGuard } from './components/guards/bloquear-aceso.guard'
 
 const routes: Routes = [
-  //{path: ' ', pathMatch: 'full', redirectTo: '#'},
-  //{path: 'login', component: HomeComponent },
+ //canActivate: [BloquearAcesoGuard] 
   {
-    path: 'login',
-    component: HomeComponent,
-    canActivate: [BloquearAcesoGuard],
+    path: 'login',component: HomeComponent
   },
   { path: 'form', component: FormularioComponent },
-  { path: 'manager/authorize/:id', component: AutorizarComponent },
-  { path: 'vigilance', component: VigilanciaComponent },
-  { path: 'monitoring', component: MonitoreoComprasComponent },
-  { path: 'manager', component: ManagerComponent },
-  { path: 'monitoreo2', component: MonitoreoAlmacenComponent },
+  { path: 'Administrador/autorizar/:id', component: AutorizarComponent },
+  { path: 'vigilancia', component: VigilanciaComponent },
+  { path: 'monitoreo-Compras', component: MonitoreoComprasComponent },
+  { path: 'Administrador', component: ManagerComponent,canActivate: [BloquearAcesoGuard]},
+  { path: 'monitoreo-Almacen', component: MonitoreoAlmacenComponent },
   { path: 'general', component: VistaGeneralComponent },
   { path: 'general/verInfo/:id', component: MostrarDatosComponent },
-  { path: 'monitoring/HistorialComents/:id', component: ViewHitoriComComponent },
+  { path: 'monitoreo-Compras/Historial-Comentario/:id', component: ViewHitoriComComponent },
 ]
 
 @NgModule({

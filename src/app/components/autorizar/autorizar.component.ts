@@ -62,6 +62,9 @@ export class AutorizarComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.bsModalRef = this.modalService.show(template)
   }
+  openModal2(template2: TemplateRef<any>) {
+    this.bsModalRef = this.modalService.show(template2)
+  }
   saveSomeThing() {
     // confirm or save something
     this.bsModalRef.hide()

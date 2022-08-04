@@ -40,6 +40,9 @@
           Observaciones:
           <b>{{ item.observaciones }}</b>
         </p>
+        
+        
+
         <!--  
       <p><b class="formataAprove">{{item.statusAprobacion}}</b></p> -->
         <div
@@ -102,7 +105,7 @@
             id="aprobado"
             class="btn btn-primary"
             value="false"
-            (click)="onSetData1(item); onUpdateSalida1(solicitud)"
+            (click)="openModal2(template2);  onSetData1(item) "
           >
             Aprobar Solicitud
           </button>
@@ -182,5 +185,68 @@
   <!--fin-->
 </ng-template>
 <!--modal para  salida de activo-->
-  </body>
+
+<!--opcionales-->
+
+<ng-template #template2>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Aprobar solicitud</h4>
+    <button
+      type="button"
+      class="close pull-rigth"
+      aria-label="Close"
+      (click)="bsModalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!--inicio-->
+  <div class="row-6 mt-5">
+    <div class="input-group mb-3 input-group-lg">
+      <span class="input-group-text" id="basic-addon1">Núm. solicitud:</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="id"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+        name="id"
+        id="txtid"
+        [(ngModel)]="solicitud.id_solicitud"
+        disabled="disabled"
+      />
+    </div>
+
+
+    <div class="input-group mb-3 input-group-lg">
+      <span class="input-group-text" id="basic-addon1">
+        Comentarios:
+      </span>
+      <textarea
+        type="text"
+        class="form-control"
+        placeholder="Comentarios(opcional)"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+        name="NombreProvedor"
+        id="txtMotivo1"
+        [(ngModel)]="solicitud.comentariosAutorizador"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="d-grid gap-2">
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="onUpdateSalida1(solicitud)"
+    >
+      Aprobar
+    </button>
+  </div>
+  <!--fin-->
+</ng-template>
+
+
+</body>
 </html>

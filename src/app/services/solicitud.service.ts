@@ -9,7 +9,7 @@ import { Observable } from 'rxjs'
 export class SolicitudService {
   constructor(private http: HttpClient) {}
 
-  urlServices:string="http://172.16.200.95:8083/api/";
+  urlServices:string="http://localhost:8085/api/";
   //172.16.200.95:8083  
   getSolicitud() {
     return this.http.get(this.urlServices+'Solicitud')

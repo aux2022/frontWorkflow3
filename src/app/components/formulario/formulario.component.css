@@ -1,14 +1,11 @@
-body {
-  background-image: url('/assets/tools2.jpg');
-  position: -webkit-sticky;
-  position: sticky;
-}
+
 .v1 {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   z-index: 1101;
-  background-color: #afafaf;
+  background-color: #212529;
 }
 .v2 {
   background-color: #ffffffea;
@@ -24,8 +21,8 @@ body {
 }
 .sticky li {
   list-style-type: none;
-  background-color: rgba(194, 194, 194, 0.267);
-  color: #efefef;
+  background-color: rgba(194, 194, 194, 0);
+  color: #2f00ff;
   height: 60px;
   padding: 0px;
   margin: 0px 0px 1px 0px;
@@ -56,9 +53,18 @@ body {
 .sticky li p a:hover {
   text-decoration: underline;
 }
+.ico{
+  z-index: 0;
+}
 .f1 {
   z-index: 0;
 }
 .f1:hover {
   z-index: 0;
+}
+.btnenvia{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.despliegue{
+  content: "▽";
 }

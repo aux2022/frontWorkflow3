@@ -34,67 +34,83 @@ export class FormularioComponent implements OnInit {
   }
 
   onAddSolicitud(solicitud: Solicitud): void {
-    console.log('hola33')
-    if (
-      ((document.getElementById('Motivo') as HTMLInputElement).disabled ===
-        true &&
-        (document.getElementById('discountPercentage') as HTMLInputElement)
-          .disabled === true) ||
-      ((document.getElementById('Motivo') as HTMLInputElement).disabled ===
-        true &&
-        (document.getElementById('discountPercentage') as HTMLInputElement)
-          .value === '') ||
-      ((document.getElementById('discountPercentage') as HTMLInputElement)
-        .disabled === true &&
-        (document.getElementById('Motivo') as HTMLInputElement).value === '')
-    ) {
+   
       if (
-        (document.getElementById('radioSi') as HTMLInputElement).checked ===
-          false &&
-        (document.getElementById('radioNo') as HTMLInputElement).checked ===
-          false
+        ((document.getElementById('txtName') as HTMLInputElement).value === '' ||
+        (document.getElementById('txtmail') as HTMLInputElement).value === ''||
+        (document.getElementById('txtArea') as HTMLInputElement).value === ''||
+        (document.getElementById('datFecha') as HTMLInputElement).value === ''||
+        (document.getElementById('txtproveedor') as HTMLInputElement).value === ''||
+        (document.getElementById('txtDescripcion') as HTMLInputElement).value === ''
+        
+        )||
+        ((document.getElementById('Motivo') as HTMLInputElement).disabled ===
+          true &&
+          (document.getElementById('discountPercentage') as HTMLInputElement)
+            .disabled === true) ||
+        ((document.getElementById('Motivo') as HTMLInputElement).disabled ===
+          true &&
+          (document.getElementById('discountPercentage') as HTMLInputElement)
+            .value === '') ||
+        ((document.getElementById('discountPercentage') as HTMLInputElement)
+          .disabled === true &&
+          (document.getElementById('Motivo') as HTMLInputElement).value === '')
       ) {
-        alert(`Un momento!!!!..,  se debe marcar si el activo regresa o no :[`)
-      }
-
-      alert(`Ups!!..,  No se ha seleccionado ningun motivo valido :'(`)
-    } else {
-      if (
-        (document.getElementById('discountPercentage') as HTMLInputElement)
-          .disabled === true
-      ) {
-        solicitud.motivo = (document.getElementById(
-          'Motivo',
-        ) as HTMLInputElement).value
-      } else {
-        solicitud.motivo = (document.getElementById(
-          'discountPercentage',
-        ) as HTMLInputElement).value
-      }
-      if (
-        (document.getElementById('radioSi') as HTMLInputElement).checked ===
-        true
-      ) {
-        solicitud.regresa = 'Regresar'
-      } else {
-        solicitud.regresa = 'No regresar'
-      }
-      solicitud.tipoTicket = (document.getElementById(
-        'ticket',
-      ) as HTMLInputElement).value
-      this.solicitudService.addSolicitud(solicitud).subscribe((res) => {
-        if (res) {
-          
-          alert('la solicitud ha sido registrada!!,  Notificación enviada.')
-          this.clear()
-          this.onDataTable()
-          window.location.reload()
-        } else {
-          alert('Error! :(')
-          console.log('hola3')
+      
+        if (
+          (document.getElementById('radioSi') as HTMLInputElement).checked ===
+            false &&
+          (document.getElementById('radioNo') as HTMLInputElement).checked ===
+            false
+        ) {
+          alert(`Un momento!!!!..,  se debe marcar si el activo regresa o no :[`)
         }
-      })
-    }
+  
+        alert(`llene toda la informació e intente de nuevo :'(`)
+      } 
+      
+      else {
+        if (
+          (document.getElementById('discountPercentage') as HTMLInputElement)
+            .disabled === true
+        ) {
+          solicitud.motivo = (document.getElementById(
+            'Motivo',
+          ) as HTMLInputElement).value
+        } else {
+          solicitud.motivo = (document.getElementById(
+            'discountPercentage',
+          ) as HTMLInputElement).value
+        }
+        if (
+          (document.getElementById('radioSi') as HTMLInputElement).checked ===
+          true
+        ) {
+          solicitud.regresa = 'Regresar'
+        } else {
+          solicitud.regresa = 'No regresar'
+        }
+        solicitud.tipoTicket = (document.getElementById(
+          'ticket',
+        ) as HTMLInputElement).value
+        this.solicitudService.addSolicitud(solicitud).subscribe((res) => {
+          if (res) {
+            
+            alert('la solicitud ha sido registrada!!,  Notificación enviada.')
+            this.clear()
+            this.onDataTable()
+            window.location.reload()
+          } else {
+            alert('Error! :(')
+            console.log('hola3')
+          }
+        })
+      }
+    
+   
+
+
+
   }
 
 
@@ -120,3 +136,7 @@ export class FormularioComponent implements OnInit {
     this.solicitud.status2 = ''
   }
 }
+
+
+
+

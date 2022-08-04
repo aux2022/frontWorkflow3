@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 import { Solicitud } from 'src/app/models/solicitud';
+import { AuthService } from 'src/app/services/auth.service';
 import { SolicitudService } from 'src/app/services/solicitud.service'; 
 
 
@@ -41,10 +42,10 @@ export class ManagerComponent implements OnInit {
     emailSent: '',
     statusAprobacion:'' 
   }
-  constructor(private route:ActivatedRoute,private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) { _CargarScripts.carga(["pruebasS"])}
+  constructor(private authService: AuthService,private route:ActivatedRoute,private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) { _CargarScripts.carga(["pruebasS"])}
   
   ngOnInit(): void {
-    
+    this.reload();
     this.onDataTable();
   }
   onDataTable()
@@ -65,6 +66,8 @@ onDeleteServ(id_Solicitud:number):void{
     }
   });
 }
+
+
 onUpdateMonitoreoC(solicitud:Solicitud):void{
   this.solicitudService.updateSolicitud(solicitud.id_solicitud, solicitud).subscribe(res => {
     if(res){
@@ -76,6 +79,19 @@ onUpdateMonitoreoC(solicitud:Solicitud):void{
       alert('Error! :(')
     }
   });
+}
+
+
+reload(){
+  if (window.performance.navigation.type == 1) {
+  
+      this.authService.logout()
+      //location.href ="login";
+    
+ 
+ }else{
+  alert('Correcto');
+}
 }
 
 }
