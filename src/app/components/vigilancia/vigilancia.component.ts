@@ -54,26 +54,32 @@ export class VigilanciaComponent implements OnInit {
     this.solicitud.status2 = select.status2
     this.solicitud.emailSent = select.emailSent
     this.solicitud.historialCompras = select.historialCompras
-
+  }
+  onSetData3(select: any) {
     this.solicitud.id_solicitud = select.id_solicitud
+    this.solicitud.solicitante = select.solicitante
+    this.solicitud.correoSolicitante = select.correoSolicitante
     this.solicitud.fechaSolicitud = select.fechaSolicitud
-    this.solicitud.motivo = select.motivo
     this.solicitud.tipoTicket = select.tipoTicket
+    this.solicitud.provedor = select.provedor
+    this.solicitud.motivo = select.motivo
     this.solicitud.area = select.area
     this.solicitud.descripcion = select.descripcion
     this.solicitud.observaciones = select.observaciones
+    this.solicitud.regresa = select.regresa
     this.solicitud.autorizador = select.autorizador
     this.solicitud.statusAprobacion = select.statusAprobacion
-    this.solicitud.comentariosAutorizador = select.comentariosAutorizador
+    this.solicitud.comentariosAutorizador = select.comentariosAutorizador //
     this.solicitud.fechaSalida = select.fechaSalida
-    this.solicitud.nombreProvedor = select.nombreProvedor //
+    this.solicitud.nombreProvedor = select.nombreProvedor
+    this.solicitud.validarSalida = 'true2'
+    this.solicitud.fechaCompromiso = select.fechaCompromiso
     this.solicitud.comentariosCompras = select.comentariosCompras
     this.solicitud.fechaRegreso = select.fechaRegreso
-    this.solicitud.status2 = select.status2
-    this.solicitud.fechaCompromiso = select.fechaCompromiso
     this.solicitud.comentariosRegreso = select.comentariosRegreso
-    this.solicitud.correoSolicitante = select.correoSolicitante
+    this.solicitud.status2 = select.status2
     this.solicitud.emailSent = select.emailSent
+    this.solicitud.historialCompras = select.historialCompras
   }
 
   onUpdateSalida(solicitud: Solicitud): void {

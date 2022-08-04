@@ -1,0 +1,12 @@
+por terminar modulo de vigilancia
+procedimiento almacenado que devuelva a los que ya seles dio salida y estan por regresar
+
+login no accede de forma correcta
+
+login modal en vigilancia para evitar errores al presionar
+
+validar campos para almacen 
+
+agregar una tarjeta para info de aceptar y rechazar, tambien para mostrar informacion
+
+----***en mostrar info las tablas estan desacomodadas
