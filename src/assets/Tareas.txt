@@ -6,11 +6,11 @@ en regreso tomar solo las aprovadas/-
 
 procedimiento almacenado que devuelva a los que ya seles dio salida y estan por regresar/-
 
-cambiar todas las rutas /-
+cambiar todas web config **
 
-validar campos para almacen 
+validar campos para almacen/-
 
-fechas regreso validar
+fechas regreso validar/-
 
 agregar una tarjeta para info de aceptar y rechazar, tambien para mostrar informacion
 
@@ -18,6 +18,6 @@ agregar una tarjeta para info de aceptar y rechazar, tambien para mostrar inform
 
 login no accede de forma correcta
 
-----***en mostrar info las tablas estan desacomodadas
+en mostrar info las tablas estan desacomodadas******
 
-filtro por fechas**********
+filtro por fechas **********

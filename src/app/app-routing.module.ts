@@ -15,11 +15,13 @@ import { ViewHitoriComComponent } from './components/view-hitori-com/view-hitori
 import { BloquearAcesoGuard } from './components/guards/bloquear-aceso.guard'
 
 const routes: Routes = [
+
  //canActivate: [BloquearAcesoGuard] 
+ { path: '', component: FormularioComponent },
   {
     path: 'login',component: HomeComponent
   },
-  { path: 'form', component: FormularioComponent },
+  
   { path: 'Administrador/autorizar/:id', component: AutorizarComponent },
   { path: 'vigilancia', component: VigilanciaComponent },
   { path: 'monitoreo-Compras', component: MonitoreoComprasComponent },
