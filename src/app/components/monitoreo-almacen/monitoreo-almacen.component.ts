@@ -90,21 +90,30 @@ this.solicitudService.GetSolicitudRechazadas().subscribe(res=>{
   }
 
   onUpdateSalida(solicitud: Solicitud): void {
-    this.solicitudService
-      .updateSolicitud(solicitud.id_solicitud, solicitud)
-      .subscribe((res) => {
-        if (res) {
-          alert('La información ha sido guardada con exito!, Esperando salida en vigilancia.')
+    if((document.getElementById('txtFecha') as HTMLInputElement).value === ''){
+alert('Debes de agregar una fecha')
+    }
+else{
+  this.solicitudService
+  .updateSolicitud(solicitud.id_solicitud, solicitud)
+  .subscribe((res) => {
+    if (res) {
+      alert('La información ha sido guardada con exito!, Esperando salida en vigilancia.')
 
-          
-          this.onDataTable()
-          this.onDataTableProceso();
-    this.onDataTableRechazadas();
-    this.onDataTableTerminadas();
-        } else {
-          alert('Error! :(')
-        }
-      })
+      
+      this.onDataTable()
+      this.onDataTableProceso();
+this.onDataTableRechazadas();
+this.onDataTableTerminadas();
+    } else {
+      alert('Error! :(')
+    }
+  })
+}
+
+
+
+    
   }
  
   onSetData(select: any) {

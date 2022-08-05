@@ -203,7 +203,7 @@
                   <ng-template #sir>
                     <div
                       *ngIf="
-                        item.validarSalida === 'true';
+                        item.validarSalida === 'true2';
                         then sir1;
                         else nor1
                       "
@@ -433,7 +433,7 @@
                   <ng-template #sir>
                     <div
                       *ngIf="
-                        item.validarSalida === 'true';
+                        item.validarSalida === 'true2';
                         then sir1;
                         else nor1
                       "
@@ -661,10 +661,10 @@
                       else nor
                     "
                   ></div>
-                  <ng-template #sir>
+                  <ng-template #sir><!--1uno-->
                     <div
                       *ngIf="
-                        item.validarSalida === 'true';
+                        item.validarSalida === 'true2';
                         then sir1;
                         else nor1
                       "
@@ -681,6 +681,7 @@
                       </td>
                       <td>
                         <button
+                        disabled
                           (click)="
                             onSetDataRegreso(item); openModal1(template1)
                           "
@@ -794,7 +795,7 @@
           aria-label="Username"
           aria-describedby="basic-addon1"
           name="FechaSolicitud"
-          id="txtFechaSalida"
+          id="txtFecha"
           [(ngModel)]="solicitud.fechaSalida"
         />
       </div>
@@ -810,14 +811,16 @@
           aria-label="Username"
           aria-describedby="basic-addon1"
           name="NombreProvedor"
-          id="txt"
+          id="txtProname"
           [(ngModel)]="solicitud.nombreProvedor"
         />
       </div>
     </div>
-
+<div *ngIf="solicitud.fechaSalida==='' || solicitud.nombreProvedor==='' then sisi else sino"> </div>
+  <ng-template #sisi>
     <div class="d-grid gap-2">
       <button
+      disabled
         type="button"
         class="btn btn-primary"
         (click)="
@@ -827,6 +830,22 @@
         Guardar Cambios
       </button>
     </div>
+  </ng-template>
+  <ng-template #sino>
+    <div class="d-grid gap-2">
+      <button
+      
+        type="button"
+        class="btn btn-primary"
+        (click)="
+          saveSomeThing(); onUpdateSalida(solicitud); 
+        "
+      >
+        Guardar Cambios
+      </button>
+    </div>
+  </ng-template>
+   
     <!--fin-->
   </ng-template>
   <!--modal para  salida de activo-->
@@ -875,7 +894,7 @@
           placeholder="Fecha de regreso"
           aria-label="Username"
           aria-describedby="basic-addon1"
-          id="fechaR"
+          id="txtFecha"
           [(ngModel)]="solicitud.fechaRegreso"
         />
       </div>
@@ -897,18 +916,39 @@
       </div>
       <br />
     </div>
-    <div class="d-grid gap-2">
-      <button
-        type="button"
-        class="btn btn-primary"
-        (click)="
-        saveSomeThing1();
-          onUpdateActivoR(solicitud);
-        "
-      >
-        Guardar Cambios
-      </button>
-    </div>
+    <div *ngIf="solicitud.fechaRegreso===''; then sisir else sinor"></div>
+    <ng-template #sisir>
+      <div class="d-grid gap-2">
+        <button
+        disabled
+          type="button"
+          class="btn btn-primary"
+          (click)="
+          saveSomeThing1();
+            onUpdateActivoR(solicitud);
+          "
+        >
+          Guardar Cambios
+        </button>
+      </div>
+    </ng-template>
+    <ng-template #sinor>
+      <div class="d-grid gap-2">
+        <button
+        
+          type="button"
+          class="btn btn-primary"
+          (click)="
+          saveSomeThing1();
+            onUpdateActivoR(solicitud);
+          "
+        >
+          Guardar Cambios
+        </button>
+      </div>
+    </ng-template>
+   
+   
     <!--fin-->
   </ng-template>
   <!--fin modales-->

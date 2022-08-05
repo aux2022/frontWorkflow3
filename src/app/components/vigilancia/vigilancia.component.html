@@ -86,7 +86,7 @@
               
                 type="bu"
                 class="btn btn-success btn-sm"
-                (click)="onSetData1(item); onUpdateSalida(solicitud)"
+                (click)="onSetData1(item);  openModal12(template1);"
                 
               >
               Confirmar salida
@@ -99,7 +99,7 @@
               disabled
                 type="bu"
                 class="btn btn-success btn-sm"
-                (click)="onSetData1(item); onUpdateSalida(solicitud)"
+                (click)="onSetData1(item); openModal12(template1);"
                 
               >
               Confirmar salida
@@ -136,7 +136,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of datatable" style="width: 100%;">
+        <tr *ngFor="let item of datatableRegre" style="width: 100%;">
         <td class="id">{{ item.id_solicitud }}</td>
          <!-- <td>{{ item.solicitante }}</td>--> 
          
@@ -151,114 +151,119 @@
     
     
            </td>
-           <!-- <td>{{ item.motivo }}</td></td>--> 
-           <!--  <td>{{ item.descripcion }}</td>--> 
-        
-         <!--  <td>{{ item.autorizador }}</td>--> 
-          
-          
-          <div
-            *ngIf="item.validarSalida !== ''; then thenBlock; else elseBlock"
-          ></div>
-          <ng-template #thenBlock>
+       
+         
             <td>
              
               <button
                 type="bu"
                 class="btn btn-primary btn-sm"
-                (click)="onSetData1(item); onUpdateSalida(solicitud)"
-                disabled
+                (click)="onSetData3(item);  openModal(template);"
+              
               >
                Confirmar regreso
               </button>
             </td>
-          </ng-template>
-          <ng-template #elseBlock>
-            <div
-            *ngIf="item.status2 === 'En reparación con'; then sale else nosale"
-          ></div>
-           <ng-template #sale>
-            <td>
-              
-              <button
-              
-                type="bu"
-                class="btn btn-primary btn-sm"
-                (click)="onSetData1(item); onUpdateSalida(solicitud)"
-                
-              >
-              Confirmar regreso
-              </button>
-            </td>
-           </ng-template>
-           <ng-template #nosale>
-            <td>
-              <button
-              disabled
-                type="bu"
-                class="btn btn-primary btn-sm"
-                (click)="onSetData1(item); onUpdateSalida(solicitud)"
-                
-              >
-              Confirmar regreso
-              </button>
-            </td>
-           </ng-template>
             
-          </ng-template>
+        
         </tr>
       </tbody>
     </table>
   </div>
   
 </div>    <!--inicia-->
-
-
 <!--tabla nueva-->
-
   </div>
-
-
-
-  
   </div>
-
-
-
-
-
-
-
-
-
 <!--viejo-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
 <!--tabla nueva-->
-
 <div class="container">
-  
   <div class="table-responsive">
-   
   </div>
-  
 </div> 
 
 
 <!--tabla nueva-->
 
+
+
+
+
+
+  <!--modales-->
+  <!--modal para  salida de activo-->
+  <ng-template class="wrapper bg-white" #template>
+    <div class="modal-header">
+      <div class="h4 text-muted text-center pt-2">Confirme sus datos para proseguir</div>
+      <button
+        type="button"
+        class="close pull-rigth"
+        aria-label="Close"
+        (click)="bsModalRef.hide()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--inicio-->
+    
+   <!-- <div class="h2 text-center">Creativity</div>-->
+      
+      
+      <form class="pt-3">
+          <div class="form-group py-2">
+              <div class="input-field"> <span class="far fa-user p-2"></span> <input id="user" type="text" placeholder="Usuario" required class=""> </div>
+          </div>
+          <div class="form-group py-1 pb-2">
+              <div class="input-field"> <span class="fas fa-lock p-2"></span> <input id="pass" type="text" placeholder="Contraseña" required class=""> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
+          </div>
+          <div class="d-flex align-items-start">
+            
+          </div> <button class="btn btn-block text-center my-3" (click)="onUpdateSalida(solicitud); saveSomeThing() ">Confirmar</button>
+          
+      </form>
+  
+    <!--fin-->
+  </ng-template>
+  <!--modal para  salida de activo-->
+
+
+
+
+
+  
+
+  <!--modales-->
+  <!--modal para  salida de activo-->
+  <ng-template class="wrapper bg-white" #template1>
+    <div class="modal-header">
+      <div class="h4 text-muted text-center pt-2">Confirme sus datos para proseguir</div>
+      <button
+        type="button"
+        class="close pull-rigth"
+        aria-label="Close"
+        (click)="bsModalRef.hide()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--inicio-->
+    
+   <!-- <div class="h2 text-center">Creativity</div>-->
+      
+      
+      <form class="pt-3">
+          <div class="form-group py-2">
+              <div class="input-field"> <span class="far fa-user p-2"></span> <input id="user" type="text" placeholder="Usuario" required class=""> </div>
+          </div>
+          <div class="form-group py-1 pb-2">
+              <div class="input-field"> <span class="fas fa-lock p-2"></span> <input id="pass" type="text" placeholder="Contraseña" required class=""> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
+          </div>
+          <div class="d-flex align-items-start">
+            
+          </div> <button class="btn btn-block text-center my-3" (click)="onUpdateSalida(solicitud); saveSomeThing() ">Confirmar</button>
+          
+      </form>
+  
+    <!--fin-->
+  </ng-template>
+  <!--modal para  salida de activo-->

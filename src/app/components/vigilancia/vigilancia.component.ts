@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, TemplateRef } from '@angular/core'
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal'
 import { CargarScriptsService } from 'src/app/cargar-scripts.service'
 import { Solicitud } from 'src/app/models/solicitud'
 import { SolicitudService } from 'src/app/services/solicitud.service'
@@ -10,9 +11,12 @@ import { SolicitudService } from 'src/app/services/solicitud.service'
 export class VigilanciaComponent implements OnInit {
   solicitud: Solicitud = new Solicitud()
   datatable: any = []
+  datatableRegre: any = []
   title: any = ''
-
+  public titles = ''
+  bsModalRef: BsModalRef = new BsModalRef()
   constructor(
+    private modalService: BsModalService,
     private solicitudService: SolicitudService,
     private _CargarScripts: CargarScriptsService,
   ) {
@@ -21,6 +25,7 @@ export class VigilanciaComponent implements OnInit {
 
   ngOnInit(): void {
     this.onDataTable()
+    this.onDataTableRegre()
   }
   onDataTable() {
     this.solicitudService.GetVigilance().subscribe((res) => {
@@ -28,7 +33,23 @@ export class VigilanciaComponent implements OnInit {
       console.log(res)
     })
   }
+  onDataTableRegre() {
+    this.solicitudService.GetVigilanceRegreso().subscribe((res) => {
+      this.datatableRegre = res
+      console.log(res)
+    })
+  }
 
+  openModal(template: TemplateRef<any>) {
+    this.bsModalRef = this.modalService.show(template)
+  }
+  openModal12(template1: TemplateRef<any>) {
+    this.bsModalRef = this.modalService.show(template1)
+  }
+  saveSomeThing() {
+    // confirm or save something
+    this.bsModalRef.hide()
+  } //4
   onSetData1(select: any) {
     this.solicitud.id_solicitud = select.id_solicitud
     this.solicitud.solicitante = select.solicitante
@@ -83,16 +104,29 @@ export class VigilanciaComponent implements OnInit {
   }
 
   onUpdateSalida(solicitud: Solicitud): void {
-    this.solicitudService
+    if((document.getElementById('user') as HTMLInputElement).value === 'Vigila'&& (document.getElementById('pass') as HTMLInputElement).value === 'sa'){
+      this.solicitudService
       .updateSolicitud(solicitud.id_solicitud, solicitud)
       .subscribe((res) => {
         if (res) {
           alert('Datos guardados!, los datos han sido guardados con exito.')
 
           this.onDataTable()
+          this. onDataTableRegre() 
         } else {
           alert('Error! :(')
         }
       })
+      
+    }else{
+      alert('error')
+    }
+   
+  }
+
+
+  login() {
+   
+   
   }
 }
