@@ -34,6 +34,7 @@
           <th  class="id">#</th>
           
          <th  class="cabezaras">Detalles</th>
+         <th  class="cabezaras"></th>
           <th  class="cabezaras" style="text-align:center;"><i class="fas fa-check-square"></i></th>
         </tr>
       </thead>
@@ -45,7 +46,7 @@
            <td>
             <div class="tarjeta">
               <p>Los articulos; 
-                <b>{{item.descripcion}},</b> entregados a <b> {{ item.nombreProvedor}}</b> el día <b>{{item.fechaSalida}}</b> con motivo de <b>{{item.motivo}} </b> requieren ser validados. </p>
+                <b>{{item.descripcion}},</b> han sido entregados a <b> {{ item.nombreProvedor}}</b> el día <b>{{item.fechaSalida}}</b> con motivo de <b>{{item.motivo}}</b>. </p>
            
             </div>
          
@@ -62,9 +63,12 @@
           <div
             *ngIf="item.validarSalida !== ''; then thenBlock; else elseBlock"
           ></div>
+          
           <ng-template #thenBlock>
+            <td> <button type="button" class="btn btn-primary btn-circle" routerLink="/general/verInfo/{{item.id_solicitud}}"><i class="fa-solid fa-info"></i>
+            </button></td>
             <td>
-             
+              
               <button
                 type="bu"
                 class="btn btn-success btn-sm"
@@ -80,8 +84,10 @@
             *ngIf="item.status2 === 'En reparación con'; then sale else nosale"
           ></div>
            <ng-template #sale>
+            <td> <button type="button" class="btn btn-primary btn-circle" routerLink="/general/verInfo/{{item.id_solicitud}}"><i class="fa-solid fa-info"></i>
+            </button></td>
             <td>
-              
+             
               <button
               
                 type="bu"
@@ -94,6 +100,8 @@
             </td>
            </ng-template>
            <ng-template #nosale>
+            <td> <button type="button" class="btn btn-primary btn-circle" routerLink="/general/verInfo/{{item.id_solicitud}}"><i class="fa-solid fa-info"></i>
+            </button></td>
             <td>
               <button
               disabled
@@ -132,6 +140,7 @@
           <th  class="id">#</th>
           
          <th  class="cabezaras">Detalles</th>
+         <th class="cabezaras" > </th>
           <th  class="cabezaras" style="text-align:center;"><i class="fas fa-check-square"></i></th>
         </tr>
       </thead>
@@ -143,7 +152,7 @@
            <td>
             <div class="tarjeta">
               <p>Los articulos; 
-                <b>{{item.descripcion}},</b> han sido entregados a <b> {{ item.nombreProvedor}}</b> el día <b>{{item.fechaSalida}}</b> con motivo de <b>{{item.motivo}}</b>. </p>
+                <b>{{item.descripcion}},</b> entregados a <b> {{ item.nombreProvedor}}</b> el día <b>{{item.fechaSalida}}</b> con motivo de <b>{{item.motivo}} </b> requieren ser validados. </p>
            
             </div>
          
@@ -152,7 +161,8 @@
     
            </td>
        
-         
+         <td> <button type="button" routerLink="/general/verInfo/{{item.id_solicitud}}" class="btn btn-primary btn-circle"><i class="fa-solid fa-info"></i>
+         </button></td>
             <td>
              
               <button
@@ -194,7 +204,7 @@
   <!--modal para  salida de activo-->
   <ng-template class="wrapper bg-white" #template>
     <div class="modal-header">
-      <div class="h4 text-muted text-center pt-2">Confirme sus datos para proseguir</div>
+      <div class="h6 text-muted text-center pt-2"><i class="fa-solid fa-triangle-exclamation triangle"></i> Confirmar regreso: ¿Seguro de realizar esta acción?.</div>
       <button
         type="button"
         class="close pull-rigth"
@@ -204,23 +214,20 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+   <br>
+  
+   
+      <h5 [(ngModel)]="solicitud.id_solicitud" class="text-center ">Solicitud: {{solicitud.id_solicitud}}</h5>
+     
     <!--inicio-->
-    
+    <p style="color:red ;" class="text-center ">Los detalles de este articulo serán quitados de la lista.</p>
    <!-- <div class="h2 text-center">Creativity</div>-->
       
-      
-      <form class="pt-3">
-          <div class="form-group py-2">
-              <div class="input-field"> <span class="far fa-user p-2"></span> <input id="user" type="text" placeholder="Usuario" required class=""> </div>
-          </div>
-          <div class="form-group py-1 pb-2">
-              <div class="input-field"> <span class="fas fa-lock p-2"></span> <input id="pass" type="text" placeholder="Contraseña" required class=""> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
-          </div>
-          <div class="d-flex align-items-start">
+     
             
-          </div> <button class="btn btn-block text-center my-3" (click)="onUpdateSalida(solicitud); saveSomeThing() ">Confirmar</button>
+           <button class="btn btn-primary" (click)="onUpdateSalida(solicitud); saveSomeThing() ">Confirmar</button>
           
-      </form>
+ <br>
   
     <!--fin-->
   </ng-template>
@@ -236,7 +243,7 @@
   <!--modal para  salida de activo-->
   <ng-template class="wrapper bg-white" #template1>
     <div class="modal-header">
-      <div class="h4 text-muted text-center pt-2">Confirme sus datos para proseguir</div>
+      <div class="h6 text-muted text-center pt-2"><i class="fa-solid fa-triangle-exclamation triangle"></i> Confirmar salida: ¿Seguro de realizar esta acción?</div>
       <button
         type="button"
         class="close pull-rigth"
@@ -246,23 +253,20 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+   <br>
+  
+   
+      <h5 [(ngModel)]="solicitud.id_solicitud" class="text-center ">Solicitud: {{solicitud.id_solicitud}}</h5>
+     
     <!--inicio-->
-    
+    <p style="color:red ;" class="text-center ">Los detalles de este articulo serán quitados de la lista</p>
    <!-- <div class="h2 text-center">Creativity</div>-->
       
-      
-      <form class="pt-3">
-          <div class="form-group py-2">
-              <div class="input-field"> <span class="far fa-user p-2"></span> <input id="user" type="text" placeholder="Usuario" required class=""> </div>
-          </div>
-          <div class="form-group py-1 pb-2">
-              <div class="input-field"> <span class="fas fa-lock p-2"></span> <input id="pass" type="password" placeholder="Contraseña" required class=""> <button class="btn bg-white text-muted"></button> </div>
-          </div>
-          <div class="d-flex align-items-start">
+     
             
-          </div> <button class="btn btn-block text-center my-3" (click)="onUpdateSalida(solicitud); saveSomeThing() ">Confirmar</button>
+           <button class="btn btn-primary" (click)="onUpdateSalida(solicitud); saveSomeThing() ">Confirmar</button>
           
-      </form>
+ <br>
   
     <!--fin-->
   </ng-template>

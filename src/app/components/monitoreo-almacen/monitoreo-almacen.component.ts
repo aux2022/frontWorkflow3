@@ -5,6 +5,7 @@ import { Solicitud } from 'src/app/models/solicitud'
 import { SolicitudService } from 'src/app/services/solicitud.service'
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal'
 import { CargarScriptsService } from 'src/app/cargar-scripts.service'
+import { AuthService } from 'src/app/services/auth.service'
 declare var window: any
 @Component({
   selector: 'app-monitoreo-almacen',
@@ -23,6 +24,7 @@ export class MonitoreoAlmacenComponent implements OnInit {
   bsModalRef: BsModalRef = new BsModalRef()
   bsModalRef1: BsModalRef = new BsModalRef()
   constructor(
+     private authService: AuthService,
     private solicitudService: SolicitudService,
     private modalService: BsModalService,
     private _CargarScripts: CargarScriptsService,
@@ -31,6 +33,9 @@ export class MonitoreoAlmacenComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.authService.logoutAlma();
+    this.reload();
     this.onDataTable();
     this.onDataTableProceso();
     this.onDataTableRechazadas();
@@ -115,7 +120,16 @@ this.onDataTableTerminadas();
 
     
   }
- 
+  reload(){
+    if (window.performance.navigation.type == 1) {
+    
+        this.authService.logout()
+        //location.href ="login";
+    
+   
+   }else{
+  }
+  }
   onSetData(select: any) {
     this.solicitud.id_solicitud = select.id_solicitud
   this.solicitud.solicitante = select.solicitante

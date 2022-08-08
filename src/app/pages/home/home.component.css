@@ -91,3 +91,19 @@
   letter-spacing: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3) inset;
 }
+
+.BS{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.v1 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  z-index: 1101;
+  background-color: #212529;
+}
+.v2 {
+  background-color: #ffffffea;
+}

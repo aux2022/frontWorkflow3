@@ -136,3 +136,7 @@ p.Mostrar();
 
 
 
+    function Cerrar() {
+    alert('Mensaje')
+    return "Te estás saliendo del sitio…";
+}

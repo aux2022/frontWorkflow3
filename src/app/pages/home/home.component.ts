@@ -32,14 +32,44 @@ export class HomeComponent implements OnInit {
   
 
   login() {
-    if((document.getElementById('username') as HTMLInputElement).value === 'sa'&& (document.getElementById('password') as HTMLInputElement).value === 'sa'){
+    if((document.getElementById('username') as HTMLInputElement).value === 'AdministraWF'&& (document.getElementById('password') as HTMLInputElement).value === 'OnSourc3#'){
       this.authService.login();
-      this.routeRedirect = this.authService.urlUsuarioIntentaAcceder;
-      this.authService.urlUsuarioIntentaAcceder = '';
-      this.router.navigate([this.routeRedirect]);
+      this.router.navigate(['/Administrador']);
+      // this.authService.login();
+      // this.routeRedirect = this.authService.urlUsuarioIntentaAcceder;
+      // this.authService.urlUsuarioIntentaAcceder = '';
+      // this.router.navigate([this.routeRedirect]);
+    
       
-    }else{
-      alert('error')
+    } else{
+      if((document.getElementById('username') as HTMLInputElement).value === 'Compras'&& (document.getElementById('password') as HTMLInputElement).value === 'ComprasUser*4'){
+        this.authService.logincom();
+        this.router.navigate(['/monitoreo-Compras']);
+      
+        
+      }else{
+        if((document.getElementById('username') as HTMLInputElement).value === 'Almacen'&& (document.getElementById('password') as HTMLInputElement).value === 'userAlmacen-701'){
+          this.authService.loginAlma();
+          this.router.navigate(['/monitoreo-Almacen']);
+        
+          
+        }else{
+          if((document.getElementById('username') as HTMLInputElement).value === 'Vigilancia'&& (document.getElementById('password') as HTMLInputElement).value === 'vigila$7SR'){
+            this.authService.loginVigila();
+            this.router.navigate(['/vigilancia']);
+          
+            
+          }
+          else{
+            // if((document.getElementById('username') as HTMLInputElement).value === 'sa'&& (document.getElementById('password') as HTMLInputElement).value === 'sa'){
+            //   this.authService.loginAutoriza();
+            //   this.router.navigate(['/Administrador/autorizar']);
+            
+              
+            // }
+          }
+        }
+      }
     }
    
   }

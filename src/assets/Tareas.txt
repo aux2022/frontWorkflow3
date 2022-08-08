@@ -6,7 +6,7 @@ en regreso tomar solo las aprovadas/-
 
 procedimiento almacenado que devuelva a los que ya seles dio salida y estan por regresar/-
 
-cambiar todas web config **
+cambiar todas RUTAS web config **
 
 validar campos para almacen/-
 

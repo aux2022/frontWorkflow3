@@ -104,12 +104,12 @@ export class VigilanciaComponent implements OnInit {
   }
 
   onUpdateSalida(solicitud: Solicitud): void {
-    if((document.getElementById('user') as HTMLInputElement).value === 'Vigila'&& (document.getElementById('pass') as HTMLInputElement).value === 'sa'){
+
       this.solicitudService
       .updateSolicitud(solicitud.id_solicitud, solicitud)
       .subscribe((res) => {
         if (res) {
-          alert('Datos guardados!, los datos han sido guardados con exito.')
+        
 
           this.onDataTable()
           this. onDataTableRegre() 
@@ -117,10 +117,7 @@ export class VigilanciaComponent implements OnInit {
           alert('Error! :(')
         }
       })
-      
-    }else{
-      alert('error')
-    }
+    
    
   }
 

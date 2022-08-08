@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 import { Solicitud } from 'src/app/models/solicitud';
+import { AuthService } from 'src/app/services/auth.service';
 import { SolicitudService } from 'src/app/services/solicitud.service'; 
 declare var window: any;
 import * as XLSX from 'xlsx';
@@ -17,9 +18,10 @@ export class MonitoreoComprasComponent implements OnInit {
   datatableProceso:any=[];
   title:any="";
   formModal: any;//1
-  constructor(private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) {_CargarScripts.carga(["pruebasS"]) }
+  constructor(private authService: AuthService,private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) {_CargarScripts.carga(["pruebasS"]) }
 
   ngOnInit(): void {
+   this.reload()
     this.formModal = new window.bootstrap.Modal(
       document.getElementById('myModal')
     );//2
@@ -28,6 +30,17 @@ export class MonitoreoComprasComponent implements OnInit {
     this.onDataTableRechazadas();
     this.onDataTableTerminadas();
   }
+  
+reload(){
+  if (window.performance.navigation.type == 1) {
+  
+      this.authService.logout()
+      //location.href ="login";
+  
+ 
+ }else{
+}
+}
   openFormModal() {
     this.formModal.show();
   }//3
@@ -112,6 +125,7 @@ onSetData(select:any){
 
  
 }
+
 name = 'DATA.xlsx';
   exportToExcel(): void {
     let element = document.getElementById('season-tble');

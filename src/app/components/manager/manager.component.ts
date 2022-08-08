@@ -45,7 +45,7 @@ export class ManagerComponent implements OnInit {
   constructor(private authService: AuthService,private route:ActivatedRoute,private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) { _CargarScripts.carga(["pruebasS"])}
   
   ngOnInit(): void {
-    this.reload();
+   this.authService.logout()
     this.onDataTable();
   }
   onDataTable()
@@ -87,12 +87,12 @@ reload(){
   
       this.authService.logout()
       //location.href ="login";
-    
+  
  
  }else{
-  alert('Correcto');
 }
 }
+
 
 }
 
