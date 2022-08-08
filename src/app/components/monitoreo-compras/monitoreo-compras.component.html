@@ -75,7 +75,11 @@
           <td>{{ item.fechaRegreso }}</td>
           <td>{{ item.comentariosRegreso }}</td>
           <td>{{ item.fechaCompromiso }}</td>
-          <td>{{ item.status2 }}</td>
+          <div *ngIf="item.status2==='En reparación con' then sisi else sino"></div>
+          <ng-template #sisi><td>{{ item.status2 }}: {{item.provedor}}</td></ng-template>
+          <ng-template #sino><td>{{ item.status2 }}</td></ng-template>
+          
+          
           <td>{{ item.comentariosCompras }}</td>
           <td>
             <button
@@ -155,7 +159,10 @@
           <td>{{ item.fechaRegreso }}</td>
           <td>{{ item.comentariosRegreso }}</td>
           <td>{{ item.fechaCompromiso }}</td>
-          <td>{{ item.status2 }}</td>
+          <div *ngIf="item.status2==='En reparación con' then sisi else sino"></div>
+          <ng-template #sisi><td>{{ item.status2 }}: {{item.provedor}}</td></ng-template>
+          <ng-template #sino><td>{{ item.status2 }}</td></ng-template>
+          
           <td>{{ item.comentariosCompras }}</td>
           <td>
             <button
@@ -237,7 +244,10 @@
           <td>{{ item.fechaRegreso }}</td>
           <td>{{ item.comentariosRegreso }}</td>
           <td>{{ item.fechaCompromiso }}</td>
-          <td>{{ item.status2 }}</td>
+          <div *ngIf="item.status2==='En reparación con' then sisi else sino"></div>
+          <ng-template #sisi><td>{{ item.status2 }}: {{item.provedor}}</td></ng-template>
+          <ng-template #sino><td>{{ item.status2 }}</td></ng-template>
+          
           <td>{{ item.comentariosCompras }}</td>
           <td>
             <button
@@ -317,6 +327,14 @@
         
          
        </div>
+
+       <div class=" input-group-lg">
+        <br>
+        
+        <span>*(Cambiar proveedor)Nuevo proveedor: </span>
+        <input type="text" class="form-control" placeholder="Proveedor"  aria-describedby="basic-addon1" name="compod" id="txtNP"  [(ngModel)]="solicitud.provedor">
+      </div>
+
        <div class=" input-group-lg">
          <br>
          

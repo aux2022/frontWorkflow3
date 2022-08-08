@@ -37,8 +37,7 @@ export class VistaGeneralComponent implements OnInit {
     emailSent: '',
     statusAprobacion:'' 
   }
-  constructor(private route:ActivatedRoute,private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) {_CargarScripts.carga(["tablaG"]) }
-
+  constructor(private route:ActivatedRoute,private solicitudService:SolicitudService,private _CargarScripts:CargarScriptsService) {_CargarScripts.carga(["pruebasS"]) }
  
   ngOnInit(): void {
     

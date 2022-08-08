@@ -25,7 +25,7 @@ const routes: Routes = [
     path: '',component: HomeComponent
   },
   
-  { path: 'Administrador/autorizar/:id', component: AutorizarComponent },
+  { path: 'Administrador/autorizar/:id', component: AutorizarComponent ,canActivate:[AutorizaGuard]},
   { path: 'vigilancia', component: VigilanciaComponent,canActivate: [VigilanciaGuard] },
   { path: 'monitoreo-Compras', component: MonitoreoComprasComponent,canActivate:[CompraGuardGuard]},
   { path: 'Administrador', component: ManagerComponent,canActivate: [BloquearAcesoGuard]},

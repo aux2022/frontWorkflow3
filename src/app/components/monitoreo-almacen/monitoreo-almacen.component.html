@@ -134,17 +134,11 @@
               <td>{{ item.fechaRegreso }}</td>
               <td>{{ item.comentariosRegreso }}</td>
               <td>{{ item.fechaCompromiso }}</td>
-              <div
-                *ngIf="item.status2 === 'En reparación con'; then si; else no"
-              ></div>
-              <ng-template #si>
-                <td>{{ item.status2 }}:{{ item.proveedor }}</td>
-              </ng-template>
-              <ng-template #no>
-                <td>{{ item.status2 }}</td>
-              </ng-template>
-
+              <div *ngIf="item.status2==='En reparación con' then sisisi else sinono"></div>
+              <ng-template #sisisi><td>{{ item.status2 }}: {{item.provedor}}</td></ng-template>
+              <ng-template #sinono><td>{{ item.status2 }}</td></ng-template>
               <td>{{ item.comentariosCompras }}</td>
+              
               <div
                 *ngIf="item.statusAprobacion === ''; then sisi; else sino"
               ></div>
@@ -364,17 +358,11 @@
               <td>{{ item.fechaRegreso }}</td>
               <td>{{ item.comentariosRegreso }}</td>
               <td>{{ item.fechaCompromiso }}</td>
-              <div
-                *ngIf="item.status2 === 'En reparación con'; then si; else no"
-              ></div>
-              <ng-template #si>
-                <td>{{ item.status2 }}:{{ item.proveedor }}</td>
-              </ng-template>
-              <ng-template #no>
-                <td>{{ item.status2 }}</td>
-              </ng-template>
-
+              <div *ngIf="item.status2==='En reparación con' then sisin else sinon"></div>
+              <ng-template #sisin><td>{{ item.status2 }}: {{item.provedor}}</td></ng-template>
+              <ng-template #sinon><td>{{ item.status2 }}</td></ng-template>
               <td>{{ item.comentariosCompras }}</td>
+              
               <div
                 *ngIf="item.statusAprobacion === ''; then sisi; else sino"
               ></div>
@@ -595,17 +583,12 @@
               <td>{{ item.fechaRegreso }}</td>
               <td>{{ item.comentariosRegreso }}</td>
               <td>{{ item.fechaCompromiso }}</td>
-              <div
-                *ngIf="item.status2 === 'En reparación con'; then si; else no"
-              ></div>
-              <ng-template #si>
-                <td>{{ item.status2 }}:{{ item.provedor }}</td>
-              </ng-template>
-              <ng-template #no>
-                <td>{{ item.status2 }}</td>
-              </ng-template>
-
+             
+              <div *ngIf="item.status2==='En reparación con' then sisins else sinons"></div>
+              <ng-template #sisins><td>{{ item.status2 }}: {{item.provedor}}</td></ng-template>
+              <ng-template #sinons><td>{{ item.status2 }}</td></ng-template>
               <td>{{ item.comentariosCompras }}</td>
+
               <div
                 *ngIf="item.statusAprobacion === ''; then sisi; else sino"
               ></div>

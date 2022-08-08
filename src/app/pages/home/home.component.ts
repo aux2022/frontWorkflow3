@@ -61,12 +61,12 @@ export class HomeComponent implements OnInit {
             
           }
           else{
-            // if((document.getElementById('username') as HTMLInputElement).value === 'sa'&& (document.getElementById('password') as HTMLInputElement).value === 'sa'){
-            //   this.authService.loginAutoriza();
-            //   this.router.navigate(['/Administrador/autorizar']);
+            if((document.getElementById('username') as HTMLInputElement).value === 'sa'&& (document.getElementById('password') as HTMLInputElement).value === 'sa'){
+              this.authService.loginAutoriza();
+              this.router.navigate(['/Administrador/autorizar/:id']);
             
               
-            // }
+            }
           }
         }
       }
