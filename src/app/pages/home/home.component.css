@@ -108,11 +108,12 @@
   background-color: #ffffffea;
 }
 .footer {
-  position: absolute;
+  margin-top: 60px;
+  position: relative;
   float: center;
-  bottom: 0;
+  
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 50px;
+  
   background-color: #f5f5f5;
 }
